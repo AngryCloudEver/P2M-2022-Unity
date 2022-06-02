@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{298778B7-5A39-D161-608A-E64AF89CFFF4}</ProjectGuid>
+    <ProjectGuid>{29B6D2A1-AB52-6093-5948-0E2F167DB2A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -54,6 +54,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyScript.cs" />
+    <Compile Include="Assets\Scripts\TurnManagement.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyShow.cs" />
+    <Compile Include="Assets\Scripts\Policy\Policy.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyHover.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyDetail.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyCloseButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

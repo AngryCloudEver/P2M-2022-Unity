@@ -11,19 +11,19 @@ D:\Aplikasi\Unity\2020.3.21f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M Kelompok 3
+C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54201
-Successfully changed project path to: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M Kelompok 3
-C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M Kelompok 3
+50360
+Successfully changed project path to: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity
+C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 339.90 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 356.92 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M Kelompok 3/Assets
+[Subsystems] Discovering subsystems at path C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -35,42 +35,41 @@ Initialize mono
 Mono path[0] = 'D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56276
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56476
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.018518 seconds.
+Registered in 0.731674 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 354.01 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 161.71 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in 16.614 seconds
+- Completed reload, in 18.986 seconds
 Domain Reload Profiling:
-	ReloadAssembly (16622ms)
-		BeginReloadAssembly (796ms)
+	ReloadAssembly (18987ms)
+		BeginReloadAssembly (10525ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (6ms)
-		EndReloadAssembly (7301ms)
-			LoadAssemblies (791ms)
+			CreateAndSetChildDomain (4ms)
+		EndReloadAssembly (5249ms)
+			LoadAssemblies (10521ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (1812ms)
+			SetupTypeCache (2575ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (492ms)
-			SetupLoadedEditorAssemblies (2560ms)
+			RebuildScriptCaches (580ms)
+			SetupLoadedEditorAssemblies (1249ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (58ms)
-				SetLoadedEditorAssemblies (3ms)
-				RefreshPlugins (354ms)
-				BeforeProcessingInitializeOnLoad (150ms)
-				ProcessInitializeOnLoadAttributes (1513ms)
-				ProcessInitializeOnLoadMethodAttributes (480ms)
+				InitializePlatformSupportModulesInManaged (74ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (162ms)
+				BeforeProcessingInitializeOnLoad (126ms)
+				ProcessInitializeOnLoadAttributes (681ms)
+				ProcessInitializeOnLoadMethodAttributes (203ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.031479 seconds.

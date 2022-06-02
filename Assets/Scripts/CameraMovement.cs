@@ -8,9 +8,10 @@ public class CameraMovement : MonoBehaviour
     public GameObject camera = null;
     public int maxWallHorizontal;
     public int maxWallVertical;
-    public int defaultZoom = 50;
+    public int defaultZoom = 80;
     public int maxZoom = 130;
     public int minZoom = 30;
+    public bool isActive = true;
 
     private CharacterController controller;
     private Camera cameraScroll;
@@ -35,62 +36,65 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Camera Movement
-        if (Input.GetKey(KeyCode.W))
+        if(isActive == true)
         {
-            controller.Move(new Vector3(cameraMovementSpeed, cameraMovementSpeed, cameraMovementSpeed) * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed * -1, cameraMovementSpeed * -1, cameraMovementSpeed * -1) * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed * -1, 0, cameraMovementSpeed) * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed, 0, cameraMovementSpeed * -1) * Time.deltaTime);
-        }
+            // Camera Movement
+            if (Input.GetKey(KeyCode.W))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed, cameraMovementSpeed, cameraMovementSpeed) * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed * -1, cameraMovementSpeed * -1, cameraMovementSpeed * -1) * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed * -1, 0, cameraMovementSpeed) * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed, 0, cameraMovementSpeed * -1) * Time.deltaTime);
+            }
 
-        // Wall Block Horizontally
-        if (camera.transform.position.x + (camera.transform.position.z * -1) > (cameraDefaultPosition.x + (cameraDefaultPosition.z * -1)) + (maxWallHorizontal / 2))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed * -1, 0, cameraMovementSpeed) * Time.deltaTime);
-        }
-        else if (camera.transform.position.x + (camera.transform.position.z * -1) < (cameraDefaultPosition.x + (cameraDefaultPosition.z * -1)) - (maxWallHorizontal / 2))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed, 0, cameraMovementSpeed * -1) * Time.deltaTime);
-        }
+            // Wall Block Horizontally
+            if (camera.transform.position.x + (camera.transform.position.z * -1) > (cameraDefaultPosition.x + (cameraDefaultPosition.z * -1)) + (maxWallHorizontal / 2))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed * -1, 0, cameraMovementSpeed) * Time.deltaTime);
+            }
+            else if (camera.transform.position.x + (camera.transform.position.z * -1) < (cameraDefaultPosition.x + (cameraDefaultPosition.z * -1)) - (maxWallHorizontal / 2))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed, 0, cameraMovementSpeed * -1) * Time.deltaTime);
+            }
 
-        // Wall Block Vertically
-        if (camera.transform.position.y < cameraDefaultPosition.y - (maxWallVertical / 2))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed, cameraMovementSpeed, cameraMovementSpeed) * Time.deltaTime);
-        }
-        else if(camera.transform.position.y > cameraDefaultPosition.y + (maxWallVertical / 2))
-        {
-            controller.Move(new Vector3(cameraMovementSpeed * -1, cameraMovementSpeed * -1, cameraMovementSpeed * -1) * Time.deltaTime);
-        }
+            // Wall Block Vertically
+            if (camera.transform.position.y < cameraDefaultPosition.y - (maxWallVertical / 2))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed, cameraMovementSpeed, cameraMovementSpeed) * Time.deltaTime);
+            }
+            else if(camera.transform.position.y > cameraDefaultPosition.y + (maxWallVertical / 2))
+            {
+                controller.Move(new Vector3(cameraMovementSpeed * -1, cameraMovementSpeed * -1, cameraMovementSpeed * -1) * Time.deltaTime);
+            }
 
-        // Zoom Scrolling
-        if (Input.mouseScrollDelta.y > mouseYDefault)
-        {
-            cameraScroll.orthographicSize -= 3;
-        }
-        else if (Input.mouseScrollDelta.y < mouseYDefault)
-        {
-            cameraScroll.orthographicSize += 3;
-        }
+            // Zoom Scrolling
+            if (Input.mouseScrollDelta.y > mouseYDefault)
+            {
+                cameraScroll.orthographicSize -= 3;
+            }
+            else if (Input.mouseScrollDelta.y < mouseYDefault)
+            {
+                cameraScroll.orthographicSize += 3;
+            }
 
-        // Zoom Block
-        if(cameraScroll.orthographicSize >= maxZoom)
-        {
-            cameraScroll.orthographicSize = maxZoom;
-        }
-        else if(cameraScroll.orthographicSize <= minZoom)
-        {
-            cameraScroll.orthographicSize = minZoom;
+            // Zoom Block
+            if(cameraScroll.orthographicSize >= maxZoom)
+            {
+                cameraScroll.orthographicSize = maxZoom;
+            }
+            else if(cameraScroll.orthographicSize <= minZoom)
+            {
+                cameraScroll.orthographicSize = minZoom;
+            }
         }
     }
 }
