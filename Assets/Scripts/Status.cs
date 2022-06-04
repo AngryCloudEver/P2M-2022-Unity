@@ -47,19 +47,60 @@ public class Status : MonoBehaviour
             playerAmount = defaultPlayerAmount = pollutionPlayerAmount;
         }
     }
+    class Power
+    {
+        public string name;
+        public int cost;
+        public int pollution;
+        public int playerAmount;
 
+        private int defaultPlayerAmount;
+
+        public Power(string powerName, int powerCost, int powerPollution, int powerPlayerAmount)
+        {
+            name = powerName;
+            cost = powerCost;
+            pollution = powerPollution;
+            playerAmount = defaultPlayerAmount = powerPlayerAmount;
+        }
+    }
+
+
+    Power[] powers = new Power[]{
+        new Power("Oil",250,2,10),
+        new Power("Tidal",500,1,3)
+};
     Money money = new Money(5000);
     Industry industry = new Industry(10);
     Reputation reputation = new Reputation(100);
     Pollution pollution = new Pollution(0);
-    public Text moneyText, industryText, reputationText, pollutionText;
+    int powerAmount, maxPowerAmount = 15;
+
+
+    public Text moneyText, industryText, reputationText, pollutionText, powerText;
+    void CalculatePower()
+    {
+        foreach (var power in powers)
+        {
+            powerAmount += power.playerAmount;
+        }
+        powerText.text = "Power: " + powerAmount + "/" + maxPowerAmount;
+    }
+    void DisplayStats()
+    {
+        CalculatePower();
+        moneyText.text = "Money: " + money.playerAmount;
+        industryText.text = "Industry: " + industry.playerAmount;
+        reputationText.text = "Reputation: " + reputation.playerAmount;
+        pollutionText.text = "Pollution: " + pollution.playerAmount;
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        moneyText.text = "Money: " + money.playerAmount.ToString();
-        industryText.text = "Industry: " + industry.playerAmount.ToString();
-        reputationText.text = "Reputation: " + reputation.playerAmount.ToString();
-        pollutionText.text = "Pollution: " + pollution.playerAmount.ToString();
+        DisplayStats();
     }
 
     // Update is called once per frame
