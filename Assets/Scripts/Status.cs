@@ -76,8 +76,8 @@ public class Status : MonoBehaviour
     Pollution pollution = new Pollution(0);
     int powerAmount, maxPowerAmount = 15;
 
-
-    public Text moneyText, industryText, reputationText, pollutionText, powerText;
+    public GameObject turn;
+    public Text moneyText, industryText, reputationText, pollutionText, powerText, turnText;
     void CalculatePower()
     {
         foreach (var power in powers)
@@ -93,9 +93,8 @@ public class Status : MonoBehaviour
         industryText.text = "Industry: " + industry.playerAmount;
         reputationText.text = "Reputation: " + reputation.playerAmount;
         pollutionText.text = "Pollution: " + pollution.playerAmount;
+        turnText.text = "Month " + turn.GetComponent<TurnManagement>().currentTurn;
     }
-
-
 
     // Start is called before the first frame update
     void Start()
