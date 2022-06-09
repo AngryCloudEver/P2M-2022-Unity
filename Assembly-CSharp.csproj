@@ -62,6 +62,8 @@
     <Compile Include="Assets\Scripts\Policy\PolicyCloseButton.cs" />
     <Compile Include="Assets\Scripts\Policy\PolicyDetail.cs" />
     <Compile Include="Assets\Scripts\Policy\Policy.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyAcceptButton.cs" />
+    <Compile Include="Assets\Scripts\Policy\PolicyRejectButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

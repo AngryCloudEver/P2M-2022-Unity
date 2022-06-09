@@ -15,7 +15,9 @@ public class PolicyShow : MonoBehaviour
     private GameObject policyHoverTitle;
     private int turn;
     private int numberOfPolicyThisTurn;
+    private int policyCount = 0;
     private int[] sourceUsed;
+    private float objectHeight;
 
     private int sourceUsedChosen;
 
@@ -40,13 +42,27 @@ public class PolicyShow : MonoBehaviour
         // Show New Policy while entering new turn
         if (turn == turnManagement.GetComponent<TurnManagement>().getTurn())
         {
+            if (policyCount != 0)
+            {
+                for(int i = 0; i < this.gameObject.transform.childCount; i++)
+                {
+                    Destroy(this.gameObject.transform.GetChild(i).gameObject);
+                }
+            }
+
+            Policy.reduceTurnCooldown(policyList.GetComponent<PolicyScript>().policies);
             availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();
+
+            policyCount = availablePolicies.Length;
 
             foreach (var policy in availablePolicies)
             {
                 source = getSource(policySource, policy.source);
+
+                objectHeight = source.GetComponent<Collider>().bounds.size.y;
+
                 policyLocation = Instantiate(policyHover, this.gameObject.transform);
-                policyLocation.transform.position = new Vector3(source.transform.position.x, source.transform.position.y + (sourceUsedChosen * 25), source.transform.position.z);
+                policyLocation.transform.position = new Vector3(source.transform.position.x, objectHeight + (sourceUsedChosen * 25), source.transform.position.z);
 
                 // Change Text Title
                 policyHoverTitle = policyLocation.transform.GetChild(0).GetChild(0).gameObject;
@@ -62,6 +78,7 @@ public class PolicyShow : MonoBehaviour
         resetSourceUsed();
     }
 
+    // Get Source From Policy's Source Name
     private GameObject getSource(GameObject[] sources, string sourceName)
     {
         int i = 0;
@@ -81,6 +98,7 @@ public class PolicyShow : MonoBehaviour
         return null;
     }
 
+    // Reset Source Used
     private void resetSourceUsed()
     {
         for (int i = 0; i < policySource.Length; i++)

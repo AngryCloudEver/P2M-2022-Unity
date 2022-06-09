@@ -50,8 +50,10 @@ public class Policy
         Policy[] availablePolicies = new Policy[policies.Length];
         int index = 0;
 
+
         foreach (var policy in policies)
         {
+            Debug.Log(policy.title + ": " + policy.cooldown);
             if (policy.cooldown == 0)
             {
                 availablePolicies[index++] = policy;
