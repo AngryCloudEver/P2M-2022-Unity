@@ -8,6 +8,7 @@ public class PolicyShow : MonoBehaviour
     public GameObject policyHover;
     public GameObject[] policySource;
     public GameObject turnManagement;
+    public GameObject stats;
 
     private Policy[] availablePolicies;
     private GameObject source;
@@ -49,6 +50,9 @@ public class PolicyShow : MonoBehaviour
                     Destroy(this.gameObject.transform.GetChild(i).gameObject);
                 }
             }
+
+            // Start Turn Productions
+            stats.GetComponent<Status>().newTurn();
 
             Policy.reduceTurnCooldown(policyList.GetComponent<PolicyScript>().policies);
             availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();

@@ -1416,6 +1416,7 @@ MonoBehaviour:
   - {fileID: 417425083}
   - {fileID: 1304075108}
   turnManagement: {fileID: 1708468321}
+  stats: {fileID: 1251235503}
 --- !u!4 &611604576
 Transform:
   m_ObjectHideFlags: 0
@@ -2282,6 +2283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerAmount: 0
   maxPowerAmount: 15
+  policyRng: 0
+  minMoneyGainAfterProducingFood: 1000
+  maxMoneyGainAfterProducingFood: 2000
   turn: {fileID: 1708468321}
   moneyText: {fileID: 56872976}
   industryText: {fileID: 1588141780}

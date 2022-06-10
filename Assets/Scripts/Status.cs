@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Status : MonoBehaviour
 {
+    // Money
     class Money
 
     {
@@ -15,6 +16,8 @@ public class Status : MonoBehaviour
             playerAmount = defaultPlayerAmount = moneyPlayerAmount;
         }
     }
+
+    // Industry
     class Industry
     {
         public int playerAmount;
@@ -25,6 +28,8 @@ public class Status : MonoBehaviour
             playerAmount = defaultPlayerAmount = industryPlayerAmount;
         }
     }
+
+    // Reputation
     class Reputation
     {
         public int playerAmount;
@@ -37,6 +42,8 @@ public class Status : MonoBehaviour
 
 
     }
+
+    // Pollution
     class Pollution
     {
         public int playerAmount;
@@ -47,6 +54,8 @@ public class Status : MonoBehaviour
             playerAmount = defaultPlayerAmount = pollutionPlayerAmount;
         }
     }
+
+    // Power
     class Power
     {
         public string name;
@@ -62,6 +71,82 @@ public class Status : MonoBehaviour
             cost = powerCost;
             pollution = powerPollution;
             playerAmount = defaultPlayerAmount = powerPlayerAmount;
+        }
+
+        static public Power selectPowerToUse(Power[] powers, int money)
+        {
+            Power chosenPower = null;
+            int minPollution = -1;
+            int RNG = 0;
+
+            foreach (var power in powers)
+            {
+                if (minPollution == -1)
+                {
+                    if (money >= power.cost)
+                    {
+                        minPollution = power.pollution;
+                        chosenPower = power;
+                    }
+                }
+                else
+                {
+                    if (minPollution > power.pollution && money >= power.cost)
+                    {
+                        minPollution = power.pollution;
+                        chosenPower = power;
+                    }
+                }
+            }
+
+            RNG = Random.Range(0, powers.Length + 2);
+
+            if (RNG < powers.Length && powers[RNG] != chosenPower && money >= powers[RNG].cost)
+            {
+                return powers[RNG];
+            }
+
+            return chosenPower;
+        }
+
+        static public void AddPower(Power[] powers, int powerAmount)
+        {
+            if (powerAmount > 0)
+            {
+                for (int i = 0; i < powerAmount; i++)
+                {
+                    bool powerReduced = false;
+
+                    while (powerReduced == false)
+                    {
+                        var powerToUse = Random.Range(0, powers.Length);
+
+                        if (powers[powerToUse].playerAmount > 0)
+                        {
+                            powers[powerToUse].playerAmount += 1;
+                            powerReduced = true;
+                        }
+                    }
+                }
+            }
+            else if (powerAmount < 0)
+            {
+                for (int i = 0; i > powerAmount; i--)
+                {
+                    bool powerReduced = false;
+
+                    while (powerReduced == false)
+                    {
+                        var powerToUse = Random.Range(0, powers.Length);
+
+                        if (powers[powerToUse].playerAmount > 0)
+                        {
+                            powers[powerToUse].playerAmount -= 1;
+                            powerReduced = true;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -105,6 +190,7 @@ public class Status : MonoBehaviour
         }
     }
 
+    // Food
     class Food
     {
         public int powerCost;
@@ -136,10 +222,16 @@ public class Status : MonoBehaviour
     Industry industry = new Industry(10);
     Reputation reputation = new Reputation(100);
     Pollution pollution = new Pollution(0);
-    public int powerAmount, maxPowerAmount = 15;
+    public int powerAmount, maxPowerAmount = 15, policyRng = 0;
+    public int minMoneyGainAfterProducingFood = 1000;
+    public int maxMoneyGainAfterProducingFood = 2000;
+
+    private int randomRng;
 
     public GameObject turn;
     public Text moneyText, industryText, reputationText, pollutionText, powerText, turnText, foodText;
+
+    // Menghitung jumlah total power
     int CalculatePower()
     {
         foreach (var power in powers)
@@ -158,7 +250,75 @@ public class Status : MonoBehaviour
         pollutionText.text = "Pollution: " + pollution.playerAmount;
         foodText.text = "Food: " + food.playerAmount;
         turnText.text = "Month " + turn.GetComponent<TurnManagement>().currentTurn;
-        Debug.Log(reputationText.text);
+    }
+
+    public void newTurn()
+    {
+        policyRng = 0;
+
+        // Check Money Cap
+        if (money.playerAmount < 0)
+        {
+            money.playerAmount = 0;
+        }
+
+        // Check Pollution Cap
+        if (pollution.playerAmount < 0)
+        {
+            pollution.playerAmount = 0;
+        }
+
+        // Produce Power
+        while (powerAmount < maxPowerAmount)
+        {
+            var chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
+
+            if (chosenPower == null)
+            {
+                break;
+            }
+            else
+            {
+                powerAmount++;
+                chosenPower.playerAmount++;
+                money.playerAmount -= chosenPower.cost;
+                pollution.playerAmount += chosenPower.pollution;
+            }
+        }
+
+        // Produce Food
+        if (powerAmount >= food.powerCost && money.playerAmount >= food.moneyCost)
+        {
+            food.playerAmount += food.foodProduced;
+            money.playerAmount -= food.moneyCost;
+
+            Power.AddPower(powers, food.powerCost * -1);
+
+            powerAmount -= food.powerCost;
+            money.playerAmount += Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood);
+        }
+
+        // Generate Pollution
+        randomRng = Random.Range(1, 4);
+        pollution.playerAmount += randomRng;
+
+        // Adjusting Policy RNG
+        if (powerAmount >= 2 && food.playerAmount >= 3)
+        {
+            policyRng += 5; // 2 from power and 3 from food
+        }
+        else if (powerAmount >= 2 && food.playerAmount < 3)
+        {
+            policyRng -= 1; // 2 from power and -3 from food
+        }
+        else if (powerAmount < 2 && food.playerAmount >= 3)
+        {
+            policyRng += 1; // -2 from power and 3 from food
+        }
+        else
+        {
+            policyRng -= 5; // -2 from power and -3 from food
+        }
     }
 
     public void AddMoney(int addedMoney)
