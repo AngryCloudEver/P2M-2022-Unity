@@ -10,7 +10,7 @@ public class TurnManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTurn = PlayerPrefs.GetInt("currentTurn",1);
+        currentTurn = 1;
     }
 
     // Update is called once per frame
@@ -22,9 +22,5 @@ public class TurnManagement : MonoBehaviour
     public int getTurn()
     {
         return currentTurn;
-    }
-    public void addTurn(){
-        currentTurn++;
-        PlayerPrefs.SetInt("currentTurn", currentTurn);
     }
 }

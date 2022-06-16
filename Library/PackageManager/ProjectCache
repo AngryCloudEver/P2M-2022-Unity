@@ -5,26 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< Updated upstream
       ticks: 637899195852306707
     m_Hash: 1945369796
-=======
-      ticks: 637902874588484993
-    m_Hash: 1494375220
->>>>>>> Stashed changes
   m_LockFileStatus:
     m_FilePath: C:/Unity Projects/P2M-2022-Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< Updated upstream
       ticks: 637899195852436358
     m_Hash: 1714483264
-=======
-      ticks: 637902874588524886
-    m_Hash: 3212768180
->>>>>>> Stashed changes
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
