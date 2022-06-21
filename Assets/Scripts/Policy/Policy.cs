@@ -53,7 +53,6 @@ public class Policy
 
         foreach (var policy in policies)
         {
-            Debug.Log(policy.title + ": " + policy.cooldown);
             if (policy.cooldown == 0)
             {
                 availablePolicies[index++] = policy;
@@ -88,19 +87,19 @@ public class Policy
                     chosenPolicies[i] = policies[number];
                     policyChosen = true;
                     policies[number].cooldown = 2;
-                    PlayerPrefs.SetInt(policies[number].title, policies[number].cooldown);                   
+                    PlayerPrefs.SetInt(policies[number].title, policies[number].cooldown);
                 }
             }
         }
-        PlayerPrefs.SetInt("firstPolicy",chosenPolicies[0].id);
-        PlayerPrefs.SetInt("secondPolicy",chosenPolicies[1].id);
-        PlayerPrefs.SetInt("thirdPolicy",chosenPolicies[2].id);
+        if (chosenPolicies.Length >= 1) { PlayerPrefs.SetInt("firstPolicy", chosenPolicies[0].id); }
+        if (chosenPolicies.Length >= 2) { PlayerPrefs.SetInt("secondPolicy", chosenPolicies[1].id); }
+        if (chosenPolicies.Length == 3) { PlayerPrefs.SetInt("thirdPolicy", chosenPolicies[2].id); }
 
         return chosenPolicies;
     }
 
-    
-    
+
+
 
     static public void reduceTurnCooldown(Policy[] policies)
     {

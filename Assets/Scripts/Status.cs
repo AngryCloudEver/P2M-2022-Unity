@@ -268,12 +268,12 @@ public class Status : MonoBehaviour
     }
     void DisplayStats()
     {
-        moneyText.text = "Money: " + money.playerAmount;
-        powerText.text = "Power: " + powerAmount + "/" + maxPowerAmount;
-        industryText.text = "Industry: " + industry.playerAmount;
-        reputationText.text = "Reputation: " + reputation.playerAmount;
-        pollutionText.text = "Pollution: " + pollution.playerAmount;
-        foodText.text = "Food: " + food.playerAmount;
+        moneyText.text = "" + money.playerAmount;
+        powerText.text = "" + powerAmount + "/" + maxPowerAmount;
+        industryText.text = "" + industry.playerAmount;
+        reputationText.text = "" + reputation.playerAmount;
+        pollutionText.text = "" + pollution.playerAmount;
+        foodText.text = "" + food.playerAmount;
         turnText.text = "Month " + turn.GetComponent<TurnManagement>().getTurn();
     }
 

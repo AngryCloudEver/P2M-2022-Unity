@@ -57,11 +57,6 @@ public class PolicyShow : MonoBehaviour
                 // Start Turn Productions
                 
             }
-            
-
-            
-            
-
            
             if(policyCount == 0 && PlayerPrefs.HasKey("firstPolicy")){ //Game recently launched and has saved data
                 availablePolicies = policyList.GetComponent<PolicyScript>().loadPolicies();
@@ -72,10 +67,6 @@ public class PolicyShow : MonoBehaviour
                 availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();
             }
             policyCount = availablePolicies.Length;
-            
-            
-            
-
 
             foreach (var policy in availablePolicies)
             {
@@ -84,7 +75,7 @@ public class PolicyShow : MonoBehaviour
                 objectHeight = source.GetComponent<Collider>().bounds.size.y;
 
                 policyLocation = Instantiate(policyHover, this.gameObject.transform);
-                policyLocation.transform.position = new Vector3(source.transform.position.x, objectHeight + (sourceUsedChosen * 25), source.transform.position.z);
+                policyLocation.transform.position = new Vector3(source.transform.position.x, objectHeight + 20 + (sourceUsedChosen * 20), source.transform.position.z);
 
                 // Change Text Title
                 policyHoverTitle = policyLocation.transform.GetChild(0).GetChild(0).gameObject;
