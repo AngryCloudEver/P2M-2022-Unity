@@ -53,9 +53,7 @@ public class PolicyScript : MonoBehaviour
     
     void AddToDictionary(){ 
         for(int i=1; i<=policies.Length; i++){
-        Debug.Log("ID:"+i+" Index: "+policies[i-1] +"/"+policies.Length);
         policyDictionary.Add(i, policies[i-1]);
-        Debug.Log(policies[i-1].title);
         }
     }
 

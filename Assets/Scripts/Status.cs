@@ -124,12 +124,12 @@ public class Status : MonoBehaviour
                         if (powers[powerToUse].playerAmount > 0)
                         {
                             powers[powerToUse].playerAmount += 1;
-                            if(powers[powerToUse].name.Equals("Oil")){
-                                PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                            }
-                            if(powers[powerToUse].name.Equals("Tidal")){
-                                PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                            }
+                            // if(powers[powerToUse].name.Equals("Oil")){
+                            //     PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
+                            // }
+                            // if(powers[powerToUse].name.Equals("Tidal")){
+                            //     PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
+                            // }
                             powerReduced = true;
                         }
                     }
@@ -148,12 +148,12 @@ public class Status : MonoBehaviour
                         if (powers[powerToUse].playerAmount > 0)
                         {
                             powers[powerToUse].playerAmount -= 1;
-                         if(powers[powerToUse].name.Equals("Oil")){
-                                PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                            }
-                         if(powers[powerToUse].name.Equals("Tidal")){
-                                PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                            }
+                        //  if(powers[powerToUse].name.Equals("Oil")){
+                        //         PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
+                        //     }
+                        //  if(powers[powerToUse].name.Equals("Tidal")){
+                        //         PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
+                        //     }
                             powerReduced = true;
                         }
                     }
@@ -177,12 +177,12 @@ public class Status : MonoBehaviour
                     if (powers[powerToUse].playerAmount > 0)
                     {
                         powers[powerToUse].playerAmount += 1;
-                        if(powers[powerToUse].name.Equals("Oil")){
-                                PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                            }
-                        if(powers[powerToUse].name.Equals("Tidal")){
-                                PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                            }
+                        // if(powers[powerToUse].name.Equals("Oil")){
+                        //         PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
+                        //     }
+                        // if(powers[powerToUse].name.Equals("Tidal")){
+                        //         PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
+                        //     }
                         powerReduced = true;
                     }
                 }
@@ -201,12 +201,12 @@ public class Status : MonoBehaviour
                     if (powers[powerToUse].playerAmount > 0)
                     {
                         powers[powerToUse].playerAmount -= 1;
-                        if(powers[powerToUse].name.Equals("Oil")){
-                                PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                            }
-                        if(powers[powerToUse].name.Equals("Tidal")){
-                                PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                        }
+                        // if(powers[powerToUse].name.Equals("Oil")){
+                        //         PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
+                        //     }
+                        // if(powers[powerToUse].name.Equals("Tidal")){
+                        //         PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
+                        // }
                         powerReduced = true;
                     }
                 }
@@ -252,7 +252,7 @@ public class Status : MonoBehaviour
 
     private int randomRng;
 
-    public GameObject turn;
+    public GameObject turn,policyShow;
     public Text moneyText, industryText, reputationText, pollutionText, powerText, turnText, foodText;
 
     // Menghitung jumlah total power
@@ -260,7 +260,7 @@ public class Status : MonoBehaviour
     {
         foreach (var power in powers)
         {
-            power.playerAmount = PlayerPrefs.GetInt(power.name,power.playerAmount);
+            power.playerAmount = power.playerAmount;
             powerAmount += power.playerAmount;
         }
 
@@ -355,7 +355,7 @@ public class Status : MonoBehaviour
         {
             money.playerAmount = 0;
         }
-        PlayerPrefs.SetInt("money",money.playerAmount);
+        
     }
 
     public void SubtractMoney(int subtractedMoney)
@@ -366,7 +366,7 @@ public class Status : MonoBehaviour
         {
             money.playerAmount = 0;
         }
-        PlayerPrefs.SetInt("money",money.playerAmount);
+        
     }
 
     public bool CheckEnoughMoney(int cost)
@@ -384,7 +384,7 @@ public class Status : MonoBehaviour
     public void AddFood(int addedFood)
     {
         food.playerAmount += addedFood;
-        PlayerPrefs.SetInt("foodAmount", food.playerAmount);
+        
     }
 
     public void AddPower(int addedPower)
@@ -417,7 +417,7 @@ public class Status : MonoBehaviour
         {
             pollution.playerAmount = 0;
         }
-        PlayerPrefs.SetInt("pollution", pollution.playerAmount);
+        
     }
 
     public void AddIndustry(int addedIndustry)
@@ -428,8 +428,8 @@ public class Status : MonoBehaviour
         {
             industry.playerAmount = 0;
         }
-        PlayerPrefs.SetInt("industry",industry.playerAmount);
     }
+        
 
     public void AddReputation(int addedReputation)
     {
@@ -439,18 +439,49 @@ public class Status : MonoBehaviour
         {
             reputation.playerAmount = 0;
         }
-        PlayerPrefs.SetInt("reputation", reputation.playerAmount);
+        
     }
+    public void SaveData(){
 
-    void LoadData(){
+        foreach (var power in powers)
+        {
+            PlayerPrefs.SetInt(power.name,power.playerAmount);
+        }
+        PlayerPrefs.SetInt("money",money.playerAmount);
+        PlayerPrefs.SetInt("foodAmount", food.playerAmount);
+        PlayerPrefs.SetInt("pollution", pollution.playerAmount);
+        PlayerPrefs.SetInt("industry",industry.playerAmount);
+        PlayerPrefs.SetInt("reputation", reputation.playerAmount);
+        policyShow.GetComponent<PolicyShow>().SaveAvailablePolicies();
+        
+    }
+    public void LoadData(){
+        int tempPowerAmount = 0;
+        foreach (var power in powers)
+        {
+            power.playerAmount = PlayerPrefs.GetInt(power.name,power.playerAmount);
+            tempPowerAmount += power.playerAmount;
+        }
+        powerAmount = tempPowerAmount;
         money.playerAmount = PlayerPrefs.GetInt("money",5000);
         food.playerAmount = PlayerPrefs.GetInt("foodAmount",60);
         pollution.playerAmount = PlayerPrefs.GetInt("pollution",0);
         industry.playerAmount = PlayerPrefs.GetInt("industry", 10);
         reputation.playerAmount = PlayerPrefs.GetInt("reputation",100);
+        
     }
 
     public void FactoryReset(){ //for testing purposes
+        // PlayerPrefs.DeleteKey("firstPolicy");
+        // PlayerPrefs.DeleteKey("secondPolicy");
+        // PlayerPrefs.DeleteKey("thirdPolicy");
+        // PlayerPrefs.DeleteKey("Oil");
+        // PlayerPrefs.DeleteKey("Tidal");
+        // PlayerPrefs.DeleteKey("money");
+        // PlayerPrefs.DeleteKey("foodAmount");
+        // PlayerPrefs.DeleteKey("pollution");
+        // PlayerPrefs.DeleteKey("industry");
+        // PlayerPrefs.DeleteKey("reputation");
         money.playerAmount = 5000;
         food.playerAmount = 60;
         pollution.playerAmount = 0;
@@ -462,7 +493,12 @@ public class Status : MonoBehaviour
     void Start()
     {
         CalculatePower();
-        LoadData();
+        string isNewGame = PlayerPrefs.GetString("isNewGame");
+        if(isNewGame == "false"){
+            LoadData();
+        }
+        
+        
         DisplayStats();
     }
 

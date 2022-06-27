@@ -21,11 +21,28 @@ public class PolicyShow : MonoBehaviour
     private float objectHeight;
 
     private int sourceUsedChosen;
-
+    private string isNewGame;
+   
     // Start is called before the first frame update
     void Start()
     {
-        turn = PlayerPrefs.GetInt("currentTurn",1);
+        if (PlayerPrefs.GetString("isNewGame") != null)
+        {
+            isNewGame = PlayerPrefs.GetString("isNewGame");
+        }
+        else
+        {
+            isNewGame = "true";
+        }
+
+        if(isNewGame == "true")
+        {
+            turn = 1;
+        }
+        else
+        {
+            turn = PlayerPrefs.GetInt("currentTurn",1);
+        }
 
         sourceUsed = new int[policySource.Length];
 
@@ -34,32 +51,28 @@ public class PolicyShow : MonoBehaviour
             sourceUsed[i] = 0;
         }
 
-        //policyHover.SetActive(false);
-
-        
+        //policyHover.SetActive(false);        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(turn + ", " + turnManagement.GetComponent<TurnManagement>().getTurn());
         // Show New Policy while entering new turn
-        if (turn == turnManagement.GetComponent<TurnManagement>().getTurn())
+        if (turn == turnManagement.GetComponent<TurnManagement>().getTurn() || turn == -1)
         {
-            
-        
-            
+            Debug.Log("Masuk");
             if (policyCount != 0)
             {
                 for(int i = 0; i < this.gameObject.transform.childCount; i++)
                 {
                     Destroy(this.gameObject.transform.GetChild(i).gameObject);
                 }
-                // Start Turn Productions
-                
             }
-           
-            if(policyCount == 0 && PlayerPrefs.HasKey("firstPolicy")){ //Game recently launched and has saved data
+            
+            if(isNewGame == "false"){ //Game recently launched and has saved data
                 availablePolicies = policyList.GetComponent<PolicyScript>().loadPolicies();
+                isNewGame = "true";
             }
             else{
                 stats.GetComponent<Status>().newTurn();
@@ -67,6 +80,8 @@ public class PolicyShow : MonoBehaviour
                 availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();
             }
             policyCount = availablePolicies.Length;
+
+            Debug.Log(availablePolicies.Length);
 
             foreach (var policy in availablePolicies)
             {
@@ -89,6 +104,13 @@ public class PolicyShow : MonoBehaviour
         }
 
         resetSourceUsed();
+    }
+
+    public void SaveAvailablePolicies()
+    {
+        if (availablePolicies.Length >= 1) { PlayerPrefs.SetInt("firstPolicy", availablePolicies[0].id); }
+        if (availablePolicies.Length >= 2) { PlayerPrefs.SetInt("secondPolicy", availablePolicies[1].id); }
+        if (availablePolicies.Length == 3) { PlayerPrefs.SetInt("thirdPolicy", availablePolicies[2].id); }
     }
 
     // Get Source From Policy's Source Name

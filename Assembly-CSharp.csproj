@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Policy\PolicyRejectButton.cs" />
+    <Compile Include="Assets\Scripts\StatusHover.cs" />
+    <Compile Include="Assets\Scripts\MenuButton.cs" />
     <Compile Include="Assets\Scripts\Status.cs" />
     <Compile Include="Assets\Scripts\Policy\PolicyScript.cs" />
     <Compile Include="Assets\Scripts\TurnManagement.cs" />
@@ -64,7 +66,6 @@
     <Compile Include="Assets\Scripts\Policy\PolicyAcceptButton.cs" />
     <Compile Include="Assets\Scripts\Policy\PolicyDetail.cs" />
     <Compile Include="Assets\Scripts\Policy\Policy.cs" />
-    <Compile Include="Assets\Scripts\StatusHover.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

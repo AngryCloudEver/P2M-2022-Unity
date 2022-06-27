@@ -91,9 +91,7 @@ public class Policy
                 }
             }
         }
-        if (chosenPolicies.Length >= 1) { PlayerPrefs.SetInt("firstPolicy", chosenPolicies[0].id); }
-        if (chosenPolicies.Length >= 2) { PlayerPrefs.SetInt("secondPolicy", chosenPolicies[1].id); }
-        if (chosenPolicies.Length == 3) { PlayerPrefs.SetInt("thirdPolicy", chosenPolicies[2].id); }
+
 
         return chosenPolicies;
     }
