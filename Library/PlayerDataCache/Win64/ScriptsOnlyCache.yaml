@@ -52,21 +52,21 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1486}
+      Script: {instanceID: 1484}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1656}
     - Class: 114
-      Script: {instanceID: 2004}
+      Script: {instanceID: 2002}
     - Class: 114
-      Script: {instanceID: 2294}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2406}
+      Script: {instanceID: 2404}
     - Class: 114
-      Script: {instanceID: 2568}
+      Script: {instanceID: 2566}
     - Class: 114
-      Script: {instanceID: 2752}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2832}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -113,51 +113,51 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1486}
+      Script: {instanceID: 1484}
     - Class: 114
-      Script: {instanceID: 1536}
+      Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 1576}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 1630}
+      Script: {instanceID: 1628}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1656}
     - Class: 114
-      Script: {instanceID: 1696}
+      Script: {instanceID: 1694}
     - Class: 114
-      Script: {instanceID: 2004}
+      Script: {instanceID: 2002}
     - Class: 114
-      Script: {instanceID: 2124}
+      Script: {instanceID: 2122}
     - Class: 114
-      Script: {instanceID: 2276}
+      Script: {instanceID: 2274}
     - Class: 114
-      Script: {instanceID: 2294}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2406}
+      Script: {instanceID: 2404}
     - Class: 114
-      Script: {instanceID: 2568}
+      Script: {instanceID: 2566}
     - Class: 114
-      Script: {instanceID: 2752}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2762}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2832}
     - Class: 114
-      Script: {instanceID: 3194}
+      Script: {instanceID: 3192}
     - Class: 114
-      Script: {instanceID: 3542}
+      Script: {instanceID: 3540}
     - Class: 114
-      Script: {instanceID: 3670}
+      Script: {instanceID: 3668}
     - Class: 114
-      Script: {instanceID: 3694}
+      Script: {instanceID: 3692}
     - Class: 114
-      Script: {instanceID: 3720}
+      Script: {instanceID: 3718}
     - Class: 114
-      Script: {instanceID: 4044}
+      Script: {instanceID: 4042}
     - Class: 114
-      Script: {instanceID: 4204}
+      Script: {instanceID: 4202}
     - Class: 114
-      Script: {instanceID: 4276}
+      Script: {instanceID: 4274}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -196,21 +196,21 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1486}
+      Script: {instanceID: 1484}
     - Class: 114
-      Script: {instanceID: 1658}
+      Script: {instanceID: 1656}
     - Class: 114
-      Script: {instanceID: 2004}
+      Script: {instanceID: 2002}
     - Class: 114
-      Script: {instanceID: 2294}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2406}
+      Script: {instanceID: 2404}
     - Class: 114
-      Script: {instanceID: 2568}
+      Script: {instanceID: 2566}
     - Class: 114
-      Script: {instanceID: 2752}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2832}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -725,5 +725,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/DevScene.unity
   - Assets/Scenes/CreditScene.unity
-  playerPath: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity/BuildedGame/P2M
-    Kelompok 3.exe
+  playerPath: C:/Unity Results/P2M-2022-Unity/P2M Kelompok 3.exe
