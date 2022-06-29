@@ -314,7 +314,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 70b0cd153e29534439fbf31ba6355fb5
+      Hash: 5bdbdabf5bb4fc5edc668b65a094bec4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Status

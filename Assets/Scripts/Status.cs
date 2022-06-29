@@ -20,10 +20,10 @@ public class Status : MonoBehaviour
     // Industry
     class Industry
     {
-        public int playerAmount;
-        private int defaultPlayerAmount;
+        public float playerAmount;
+        private float defaultPlayerAmount;
 
-        public Industry(int industryPlayerAmount)
+        public Industry(float industryPlayerAmount)
         {
             playerAmount = defaultPlayerAmount = industryPlayerAmount;
         }
@@ -76,34 +76,21 @@ public class Status : MonoBehaviour
         static public Power selectPowerToUse(Power[] powers, int money)
         {
             Power chosenPower = null;
-            int minPollution = -1;
             int RNG = 0;
 
-            foreach (var power in powers)
+            RNG = Random.Range(1, 10);
+
+            if (RNG == 1 && money > powers[0].cost)
             {
-                if (minPollution == -1)
-                {
-                    if (money >= power.cost)
-                    {
-                        minPollution = power.pollution;
-                        chosenPower = power;
-                    }
-                }
-                else
-                {
-                    if (minPollution > power.pollution && money >= power.cost)
-                    {
-                        minPollution = power.pollution;
-                        chosenPower = power;
-                    }
-                }
+                return powers[0];
             }
-
-            RNG = Random.Range(0, powers.Length + 2);
-
-            if (RNG < powers.Length && powers[RNG] != chosenPower && money >= powers[RNG].cost)
+            if ((RNG > 1 && RNG < 6) && money > powers[1].cost)
             {
-                return powers[RNG];
+                return powers[1];
+            }
+            if (RNG > 6 && money > powers[2].cost)
+            {
+                return powers[2];
             }
 
             return chosenPower;
@@ -124,12 +111,6 @@ public class Status : MonoBehaviour
                         if (powers[powerToUse].playerAmount > 0)
                         {
                             powers[powerToUse].playerAmount += 1;
-                            // if(powers[powerToUse].name.Equals("Oil")){
-                            //     PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                            // }
-                            // if(powers[powerToUse].name.Equals("Tidal")){
-                            //     PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                            // }
                             powerReduced = true;
                         }
                     }
@@ -148,12 +129,6 @@ public class Status : MonoBehaviour
                         if (powers[powerToUse].playerAmount > 0)
                         {
                             powers[powerToUse].playerAmount -= 1;
-                        //  if(powers[powerToUse].name.Equals("Oil")){
-                        //         PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                        //     }
-                        //  if(powers[powerToUse].name.Equals("Tidal")){
-                        //         PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                        //     }
                             powerReduced = true;
                         }
                     }
@@ -237,23 +212,26 @@ public class Status : MonoBehaviour
         }
     }
 
-    Food food = new Food(2, 600, 10, 3);
+    Food food = new Food(1, 2, 10, 2);
     Power[] powers = new Power[]{
-        new Power("Oil",250,2,10),
-        new Power("Tidal",500,1,3)
+        new Power("Coal",1,2,1),
+        new Power("Hydro",2,1,3),
+        new Power("Solar",3,0,6)
     };
-    Money money = new Money(5000);
-    Industry industry = new Industry(10);
-    Reputation reputation = new Reputation(100);
-    Pollution pollution = new Pollution(0);
-    public int powerAmount, maxPowerAmount = 15, policyRng = 0;
-    public int minMoneyGainAfterProducingFood = 1000;
-    public int maxMoneyGainAfterProducingFood = 2000;
+    Money money = new Money(10);
+    Industry industry = new Industry(1f);
+    Reputation reputation = new Reputation(20);
+    Pollution pollution = new Pollution(10);
+    public int powerAmount, maxPowerAmount = 20;
+    public int minMoneyGainAfterProducingFood = -3;
+    public int maxMoneyGainAfterProducingFood = 3;
 
     private int randomRng;
 
-    public GameObject turn,policyShow;
+    public GameObject turn, policyShow;
     public Text moneyText, industryText, reputationText, pollutionText, powerText, turnText, foodText;
+
+    public string gameOverText = null;
 
     // Menghitung jumlah total power
     int CalculatePower()
@@ -270,7 +248,7 @@ public class Status : MonoBehaviour
     {
         moneyText.text = "" + money.playerAmount;
         powerText.text = "" + powerAmount + "/" + maxPowerAmount;
-        industryText.text = "" + industry.playerAmount;
+        industryText.text = "" + Mathf.Round(industry.playerAmount);
         reputationText.text = "" + reputation.playerAmount;
         pollutionText.text = "" + pollution.playerAmount;
         foodText.text = "" + food.playerAmount;
@@ -279,71 +257,94 @@ public class Status : MonoBehaviour
 
     public void newTurn()
     {
-        policyRng = 0;
+        // Food Consumption
+        food.playerAmount -= 1;
 
-        // Check Money Cap
-        if (money.playerAmount < 0)
+        // Vibe Check
+        if(money.playerAmount < -10)
         {
-            money.playerAmount = 0;
+            gameOverText = "Bankrupt";
         }
-
-        // Check Pollution Cap
-        if (pollution.playerAmount < 0)
+        if(food.playerAmount < -10)
         {
-            pollution.playerAmount = 0;
+            gameOverText = "Starved";
+        }
+        if(reputation.playerAmount < 0)
+        {
+            gameOverText = "Not Trusted";
+        }
+        if(pollution.playerAmount < 1)
+        {
+            gameOverText = "Win";
+        }
+        if(pollution.playerAmount > 20)
+        {
+            gameOverText = "Pollution";
         }
 
         // Produce Power
-        while (powerAmount < maxPowerAmount)
+        for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
         {
-            var chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
+            Power chosenPower = null;
+            do
+            {
+                chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
 
-            if (chosenPower == null)
-            {
-                break;
-            }
-            else
-            {
-                AddPowerAmount(1);
-                chosenPower.playerAmount++;
-                PlayerPrefs.SetInt(chosenPower.name,chosenPower.playerAmount);
-                SubtractMoney(chosenPower.cost);
-                AddPollution(chosenPower.pollution);
-            }
+                if (chosenPower == null)
+                {
+                    if(money.playerAmount < 1)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
+                    chosenPower.playerAmount++;
+                    PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
+                    SubtractMoney(chosenPower.cost);
+                    AddPollution(chosenPower.pollution);
+                }
+            } while (chosenPower == null);
         }
 
         // Produce Food
         if (powerAmount >= food.powerCost && money.playerAmount >= food.moneyCost)
         {
-            AddFood(food.foodProduced);
+            AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
             SubtractMoney(food.moneyCost);
 
             Power.AddPower(powers, food.powerCost * -1);
 
             SubtractPowerAmount(food.powerCost);
             AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
+
+            // Polution from producing food
+            AddPollution(1);
         }
 
-        // Generate Pollution
-        randomRng = Random.Range(1, 4);
-        AddPollution(randomRng);
+        // Check Money Cap
+        if (money.playerAmount > 20)
+        {
+            money.playerAmount = 20;
+        }
 
-        // Adjusting Policy RNG
-        if (powerAmount >= 2 && food.playerAmount >= 3)
+        // Check Food Cap
+        if (food.playerAmount > 20)
         {
-            policyRng += 5; // 2 from power and 3 from food
+            food.playerAmount = 20;
         }
-        else if (powerAmount >= 2 && food.playerAmount < 3)
+
+        // Check Industry Cap
+        if (industry.playerAmount > 3f)
         {
-            policyRng -= 1; // 2 from power and -3 from food
+            industry.playerAmount = 3f;
         }
-        else if (powerAmount < 2 && food.playerAmount >= 3)
+
+        // Check Reputation Cap
+        if (reputation.playerAmount > 30)
         {
-            policyRng += 1; // -2 from power and 3 from food
-        }
-        else
-        {
-            policyRng -= 5; // -2 from power and -3 from food
+            reputation.playerAmount = 30;
         }
     }
 
@@ -420,7 +421,7 @@ public class Status : MonoBehaviour
         
     }
 
-    public void AddIndustry(int addedIndustry)
+    public void AddIndustry(float addedIndustry)
     {
         industry.playerAmount += addedIndustry;
 
@@ -450,7 +451,7 @@ public class Status : MonoBehaviour
         PlayerPrefs.SetInt("money",money.playerAmount);
         PlayerPrefs.SetInt("foodAmount", food.playerAmount);
         PlayerPrefs.SetInt("pollution", pollution.playerAmount);
-        PlayerPrefs.SetInt("industry",industry.playerAmount);
+        PlayerPrefs.SetFloat("industry",industry.playerAmount);
         PlayerPrefs.SetInt("reputation", reputation.playerAmount);
         policyShow.GetComponent<PolicyShow>().SaveAvailablePolicies();
         
@@ -463,12 +464,11 @@ public class Status : MonoBehaviour
             tempPowerAmount += power.playerAmount;
         }
         powerAmount = tempPowerAmount;
-        money.playerAmount = PlayerPrefs.GetInt("money",5000);
-        food.playerAmount = PlayerPrefs.GetInt("foodAmount",60);
-        pollution.playerAmount = PlayerPrefs.GetInt("pollution",0);
-        industry.playerAmount = PlayerPrefs.GetInt("industry", 10);
-        reputation.playerAmount = PlayerPrefs.GetInt("reputation",100);
-        
+        money.playerAmount = PlayerPrefs.GetInt("money",10);
+        food.playerAmount = PlayerPrefs.GetInt("foodAmount",10);
+        pollution.playerAmount = PlayerPrefs.GetInt("pollution",10);
+        industry.playerAmount = PlayerPrefs.GetFloat("industry", 1f);
+        reputation.playerAmount = PlayerPrefs.GetInt("reputation",20);
     }
 
     public void FactoryReset(){ //for testing purposes
@@ -482,11 +482,11 @@ public class Status : MonoBehaviour
         // PlayerPrefs.DeleteKey("pollution");
         // PlayerPrefs.DeleteKey("industry");
         // PlayerPrefs.DeleteKey("reputation");
-        money.playerAmount = 5000;
-        food.playerAmount = 60;
-        pollution.playerAmount = 0;
-        industry.playerAmount = 10;
-        reputation.playerAmount = 100;
+        money.playerAmount = 10;
+        food.playerAmount = 10;
+        pollution.playerAmount = 10;
+        industry.playerAmount = 1f;
+        reputation.playerAmount = 20;
     }
 
     // Start is called before the first frame update

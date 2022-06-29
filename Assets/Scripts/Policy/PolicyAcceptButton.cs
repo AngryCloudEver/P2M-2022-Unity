@@ -9,7 +9,7 @@ public class PolicyAcceptButton : MonoBehaviour
     public GameObject turnManagement;
 
     private Policy policyChosen;
-    private int popularityRng;
+    private int RNG;
 
     // Start is called before the first frame update
     void Start()
@@ -34,27 +34,49 @@ public class PolicyAcceptButton : MonoBehaviour
             gameObject.transform.parent.gameObject.SetActive(false);
 
             // Applying Effects
-            stats.GetComponent<Status>().AddMoney(policyChosen.cashCost * -1);
-            stats.GetComponent<Status>().AddMoney(policyChosen.cashEffectAccept);
-            stats.GetComponent<Status>().AddFood(policyChosen.foodEffectAccept);
-            stats.GetComponent<Status>().AddPower(policyChosen.powerEffectAccept);
-            stats.GetComponent<Status>().AddPollution(policyChosen.pollutionEffectAccept);
-            stats.GetComponent<Status>().AddIndustry(policyChosen.industryEffectAccept);
-            stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectAccept);
+            if(policyChosen.id == 4)
+            {
+                RNG = Random.Range(1, 4);
+
+                // Lose
+                if(RNG == 1)
+                {
+                    stats.GetComponent<Status>().AddMoney(-3);
+
+                }
+                // Rank 1
+                else if(RNG == 2)
+                {
+                    stats.GetComponent<Status>().AddMoney(7);
+                }
+                // Rank 2
+                else if(RNG == 3)
+                {
+                    stats.GetComponent<Status>().AddMoney(5);
+                }
+                else if (RNG == 4)
+                {
+                    stats.GetComponent<Status>().AddMoney(3);
+                }
+
+                stats.GetComponent<Status>().AddFood(0);
+                stats.GetComponent<Status>().AddPower(0);
+                stats.GetComponent<Status>().AddPollution(-3);
+                stats.GetComponent<Status>().AddIndustry(0);
+                stats.GetComponent<Status>().AddReputation(1);
+            }
+            else
+            {
+                stats.GetComponent<Status>().AddMoney(policyChosen.cashCost * -1);
+                stats.GetComponent<Status>().AddMoney(policyChosen.cashEffectAccept);
+                stats.GetComponent<Status>().AddFood(policyChosen.foodEffectAccept);
+                stats.GetComponent<Status>().AddPower(policyChosen.powerEffectAccept);
+                stats.GetComponent<Status>().AddPollution(policyChosen.pollutionEffectAccept);
+                stats.GetComponent<Status>().AddIndustry(policyChosen.industryEffectAccept);
+                stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectAccept);
+            }
             policyChosen.cooldown += 2;
             /*PlayerPrefs.SetInt(policyChosen.title, policyChosen.cooldown);*/
-
-            // Popularity Effect
-            if (policyChosen.popularity >= 50)
-            {
-                popularityRng = Random.Range(5, 15);
-            }
-            else if (policyChosen.popularity < 50)
-            {
-                popularityRng = Random.Range(-15, -5);
-            }
-
-            stats.GetComponent<Status>().AddReputation(popularityRng);
 
             turnManagement.GetComponent<TurnManagement>().AddTurn();
         }

@@ -9,7 +9,6 @@ public class PolicyRejectButton : MonoBehaviour
     public GameObject turnManagement;
 
     private Policy policyChosen;
-    private int popularityRng;
 
     // Start is called before the first frame update
     void Start()
@@ -44,18 +43,6 @@ public class PolicyRejectButton : MonoBehaviour
             stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectReject);
             policyChosen.cooldown += 2;
             PlayerPrefs.SetInt(policyChosen.title,policyChosen.cooldown);
-
-            // Popularity Effect
-            if (policyChosen.popularity < 50)
-            {
-                popularityRng = Random.Range(5, 15);
-            }
-            else if (policyChosen.popularity >= 50)
-            {
-                popularityRng = Random.Range(-15, -5);
-            }
-
-            stats.GetComponent<Status>().AddReputation(popularityRng);
 
             turnManagement.GetComponent<TurnManagement>().AddTurn();
         }

@@ -57,11 +57,9 @@ public class PolicyShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(turn + ", " + turnManagement.GetComponent<TurnManagement>().getTurn());
         // Show New Policy while entering new turn
         if (turn == turnManagement.GetComponent<TurnManagement>().getTurn() || turn == -1)
         {
-            Debug.Log("Masuk");
             if (policyCount != 0)
             {
                 for(int i = 0; i < this.gameObject.transform.childCount; i++)
@@ -80,8 +78,6 @@ public class PolicyShow : MonoBehaviour
                 availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();
             }
             policyCount = availablePolicies.Length;
-
-            Debug.Log(availablePolicies.Length);
 
             foreach (var policy in availablePolicies)
             {
