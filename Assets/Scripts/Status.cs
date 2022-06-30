@@ -80,15 +80,15 @@ public class Status : MonoBehaviour
 
             RNG = Random.Range(1, 10);
 
-            if (RNG == 1 && money > powers[0].cost)
+            if (RNG == 1)
             {
                 return powers[0];
             }
-            if ((RNG > 1 && RNG < 6) && money > powers[1].cost)
+            if ((RNG > 1 && RNG < 6))
             {
                 return powers[1];
             }
-            if (RNG > 6 && money > powers[2].cost)
+            if (RNG > 6)
             {
                 return powers[2];
             }
@@ -299,11 +299,14 @@ public class Status : MonoBehaviour
                 }
                 else
                 {
-                    AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
-                    chosenPower.playerAmount++;
-                    PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
-                    SubtractMoney(chosenPower.cost);
-                    AddPollution(chosenPower.pollution);
+                    if(money.playerAmount >= chosenPower.cost)
+                    {
+                        AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
+                        chosenPower.playerAmount++;
+                        PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
+                        SubtractMoney(chosenPower.cost);
+                        AddPollution(chosenPower.pollution);
+                    }
                 }
             } while (chosenPower == null);
         }

@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - PolicyRejectButton
     - PolicyScript
     - PolicyShow
+    - SkipTurnButton
     - Status
     - StatusHover
     - TurnManagement
@@ -47,8 +48,6 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -156,11 +155,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3724}
     - Class: 114
-      Script: {instanceID: 4048}
+      Script: {instanceID: 3810}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4280}
+      Script: {instanceID: 4210}
+    - Class: 114
+      Script: {instanceID: 4282}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -677,6 +678,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: 3173ab8cdba64187189e33604b77ac09
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SkipTurnButton
+  - hash:
+      serializedVersion: 2
       Hash: 6980e81ddc615a861309d2d659cc3760
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -707,7 +714,7 @@ ScriptsOnlyBuild:
     className: PolicyAcceptButton
   - hash:
       serializedVersion: 2
-      Hash: b05df511bc3e9e9137821c6897510b8b
+      Hash: 2d0689a79819012f3d5c6e8405ebc4c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyDetail
@@ -740,4 +747,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/DevScene.unity
   - Assets/Scenes/CreditScene.unity
-  playerPath: C:/Unity Projects/P2M-2022-Unity/BuildedGame/P2M Kelompok 3.exe
+  playerPath: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity/BuildedGame/P2M
+    Kelompok 3.exe
