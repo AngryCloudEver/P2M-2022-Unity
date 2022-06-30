@@ -73,7 +73,10 @@ public class PolicyShow : MonoBehaviour
                 isNewGame = "true";
             }
             else{
-                stats.GetComponent<Status>().newTurn();
+                if(turn != 1)
+                {
+                    stats.GetComponent<Status>().newTurn();
+                }
                 Policy.reduceTurnCooldown(policyList.GetComponent<PolicyScript>().policies);
                 availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();
             }
