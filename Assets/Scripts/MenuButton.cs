@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class MenuButton : MonoBehaviour
 {
+    public GameObject cameraMovement;
+    public Text pauseButtonText;
+
+    bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,18 @@ public class MenuButton : MonoBehaviour
         if(PlayerPrefs.HasKey("firstPolicy")){
           PlayerPrefs.SetString("isNewGame", "false");
           SceneManager.LoadScene("DevScene");
+        }
+        
+    }
+    public void PauseGame(){
+        isPaused = !isPaused;
+        if(isPaused){
+            pauseButtonText.text = "RESUME";
+            cameraMovement.GetComponent<CameraMovement>().isActive = false;
+        }
+        else{
+            pauseButtonText.text = "PAUSE";
+            cameraMovement.GetComponent<CameraMovement>().isActive = true;
         }
         
     }
