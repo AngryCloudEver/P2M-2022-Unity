@@ -42,7 +42,7 @@ public class PolicyRejectButton : MonoBehaviour
             stats.GetComponent<Status>().AddIndustry(policyChosen.industryEffectReject);
             stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectReject);
             policyChosen.cooldown += 2;
-            PlayerPrefs.SetInt(policyChosen.title,policyChosen.cooldown);
+            PlayerPrefs.SetInt(policyChosen.title, policyChosen.cooldown);
 
             turnManagement.GetComponent<TurnManagement>().AddTurn();
         }
