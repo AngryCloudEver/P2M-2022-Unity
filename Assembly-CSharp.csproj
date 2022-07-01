@@ -68,6 +68,9 @@
     <Compile Include="Assets\Scripts\Policy\PolicyAcceptButton.cs" />
     <Compile Include="Assets\Scripts\Policy\PolicyDetail.cs" />
     <Compile Include="Assets\Scripts\Policy\Policy.cs" />
+    <Compile Include="Assets\Scripts\PauseHandler.cs" />
+    <Compile Include="Assets\Scripts\SaveButton.cs" />
+    <Compile Include="Assets\Scripts\GameOverHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

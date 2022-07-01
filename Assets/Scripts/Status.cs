@@ -231,7 +231,7 @@ public class Status : MonoBehaviour
     public GameObject turn, policyShow;
     public Text moneyText, industryText, reputationText, pollutionText, powerText, turnText, foodText;
 
-    public string gameOverText = null;
+    public int gameOverText = -1;
 
     // Menghitung jumlah total power
     int CalculatePower()
@@ -263,23 +263,23 @@ public class Status : MonoBehaviour
         // Vibe Check
         if(money.playerAmount < -10)
         {
-            gameOverText = "Bankrupt";
+            gameOverText = 1;
         }
         if(food.playerAmount < -10)
         {
-            gameOverText = "Starved";
+            gameOverText = 2;
         }
         if(reputation.playerAmount < 0)
         {
-            gameOverText = "Not Trusted";
+            gameOverText = 3;
         }
         if(pollution.playerAmount < 1)
         {
-            gameOverText = "Win";
+            gameOverText = 4;
         }
         if(pollution.playerAmount > 20)
         {
-            gameOverText = "Pollution";
+            gameOverText = 5;
         }
 
         // Produce Power
@@ -500,8 +500,9 @@ public class Status : MonoBehaviour
         if(isNewGame == "false"){
             LoadData();
         }
-        
-        
+
+        gameOverText = -1;
+
         DisplayStats();
     }
 

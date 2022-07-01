@@ -7,6 +7,7 @@ public class PolicyHover : MonoBehaviour
     public int policyId;
     public GameObject policies;
     public GameObject policyForDetail;
+    public GameObject skipTurnButton;
     public GameObject cameraMovement;
 
     private Policy[] allPolicies;
@@ -34,6 +35,7 @@ public class PolicyHover : MonoBehaviour
         {
             policyForDetail.SetActive(true);
             policyForDetail.GetComponent<PolicyDetail>().policy = chosenPolicy;
+            skipTurnButton.GetComponent<SkipTurnButton>().policy = chosenPolicy;
         }
     }
 

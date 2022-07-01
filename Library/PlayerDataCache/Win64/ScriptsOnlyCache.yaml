@@ -3,7 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BackgroundMusic
     - CameraMovement
+    - GameOverHandler
     - MenuButton
+    - PauseHandler
     - PolicyAcceptButton
     - PolicyCloseButton
     - PolicyDetail
@@ -11,6 +13,7 @@ ScriptsOnlyBuild:
     - PolicyRejectButton
     - PolicyScript
     - PolicyShow
+    - SaveButton
     - SkipTurnButton
     - Status
     - StatusHover
@@ -162,6 +165,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4210}
     - Class: 114
       Script: {instanceID: 4282}
+    - Class: 114
+      Script: {instanceID: 18680}
+    - Class: 114
+      Script: {instanceID: 28594}
+    - Class: 114
+      Script: {instanceID: 91304}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -312,7 +321,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: e0d7e1decb004f699323dd6772369f0e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuButton
@@ -324,7 +333,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 5bdbdabf5bb4fc5edc668b65a094bec4
+      Hash: 0833b5c97fcaf8c97ecfa2a60ca7eb7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Status
@@ -642,7 +651,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: f17c15cb8c8a640aff54f305f7754f0e
+      Hash: b36fabcb39aa5c0dca7d4a6fa9cd0e31
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyHover
@@ -696,7 +705,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 852298579549fdb044b4a9c0c9e5ac4d
+      Hash: b69a494d4127a0452aaaa172461ca55c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyCloseButton
@@ -742,6 +751,24 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: e1b4a07e7bec2d2cc7b4efb92dd4a966
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 597e97ce5472ed637dc99ab5122ff362
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SaveButton
+  - hash:
+      serializedVersion: 2
+      Hash: f02f7efe00c46b2b7ea0bb9f84566af8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameOverHandler
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity

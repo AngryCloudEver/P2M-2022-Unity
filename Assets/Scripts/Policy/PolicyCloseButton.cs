@@ -6,6 +6,8 @@ public class PolicyCloseButton : MonoBehaviour
 {
     public GameObject cameraMovement;
     public GameObject policyDetail;
+    public GameObject skipTurnButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,6 @@ public class PolicyCloseButton : MonoBehaviour
     {
         cameraMovement.GetComponent<CameraMovement>().isActive = true;
         policyDetail.SetActive(false);
+        skipTurnButton.GetComponent<SkipTurnButton>().policy = null;
     }
 }

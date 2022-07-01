@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkipTurnButton : MonoBehaviour
 {
     public GameObject turnManagement;
+    public Policy policy = null;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,9 @@ public class SkipTurnButton : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        turnManagement.GetComponent<TurnManagement>().AddTurn();
+        if(policy == null)
+        {
+            turnManagement.GetComponent<TurnManagement>().AddTurn();
+        }
     }
 }
