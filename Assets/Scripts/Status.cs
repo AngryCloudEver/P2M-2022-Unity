@@ -260,28 +260,6 @@ public class Status : MonoBehaviour
         // Food Consumption
         food.playerAmount -= 1;
 
-        // Vibe Check
-        if(money.playerAmount < -10)
-        {
-            gameOverText = 1;
-        }
-        if(food.playerAmount < -10)
-        {
-            gameOverText = 2;
-        }
-        if(reputation.playerAmount < 0)
-        {
-            gameOverText = 3;
-        }
-        if(pollution.playerAmount < 1)
-        {
-            gameOverText = 4;
-        }
-        if(pollution.playerAmount > 20)
-        {
-            gameOverText = 5;
-        }
-
         // Produce Power
         for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
         {
@@ -290,41 +268,31 @@ public class Status : MonoBehaviour
             {
                 chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
 
-                if (chosenPower == null)
+                if(chosenPower != null)
                 {
-                    if(money.playerAmount < 1)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    if(money.playerAmount >= chosenPower.cost)
-                    {
-                        AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
-                        chosenPower.playerAmount++;
-                        PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
-                        SubtractMoney(chosenPower.cost);
-                        AddPollution(chosenPower.pollution);
-                    }
+                    AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
+                    chosenPower.playerAmount++;
+                    PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
+                    SubtractMoney(chosenPower.cost);
+                    AddPollution(chosenPower.pollution);
                 }
             } while (chosenPower == null);
         }
 
         // Produce Food
-        if (powerAmount >= food.powerCost && money.playerAmount >= food.moneyCost)
-        {
-            AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
-            SubtractMoney(food.moneyCost);
+        AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
+        SubtractMoney(food.moneyCost);
 
-            Power.AddPower(powers, food.powerCost * -1);
+        Power.AddPower(powers, food.powerCost * -1);
 
-            SubtractPowerAmount(food.powerCost);
-            AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
+        SubtractPowerAmount(food.powerCost);
+        AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
 
-            // Polution from producing food
-            AddPollution(1);
-        }
+        // Pollution from producing food
+        AddPollution(1);
+
+        // Pollution Dissipates Reduction
+        AddPollution(-1);
 
         // Check Money Cap
         if (money.playerAmount > 20)
@@ -349,28 +317,38 @@ public class Status : MonoBehaviour
         {
             reputation.playerAmount = 30;
         }
+
+        // Vibe Check
+        if (money.playerAmount < -10)
+        {
+            gameOverText = 1;
+        }
+        if (food.playerAmount < -10)
+        {
+            gameOverText = 2;
+        }
+        if (reputation.playerAmount < 0)
+        {
+            gameOverText = 3;
+        }
+        if (pollution.playerAmount < 1)
+        {
+            gameOverText = 4;
+        }
+        if (pollution.playerAmount > 20)
+        {
+            gameOverText = 5;
+        }
     }
 
     public void AddMoney(int addedMoney)
     {
         money.playerAmount += addedMoney;
-
-        if(money.playerAmount < 0)
-        {
-            money.playerAmount = 0;
-        }
-        
     }
 
     public void SubtractMoney(int subtractedMoney)
     {
-        money.playerAmount -= subtractedMoney;
-
-        if(money.playerAmount < 0)
-        {
-            money.playerAmount = 0;
-        }
-        
+        money.playerAmount -= subtractedMoney;        
     }
 
     public bool CheckEnoughMoney(int cost)
@@ -416,34 +394,18 @@ public class Status : MonoBehaviour
     public void AddPollution(int addedPollution)
     {
         pollution.playerAmount += addedPollution;
-
-        if (pollution.playerAmount < 0)
-        {
-            pollution.playerAmount = 0;
-        }
-        
+      
     }
 
     public void AddIndustry(float addedIndustry)
     {
         industry.playerAmount += addedIndustry;
-
-        if (industry.playerAmount < 0)
-        {
-            industry.playerAmount = 0;
-        }
     }
         
 
     public void AddReputation(int addedReputation)
     {
-        reputation.playerAmount += addedReputation;
-
-        if (reputation.playerAmount < 0)
-        {
-            reputation.playerAmount = 0;
-        }
-        
+        reputation.playerAmount += addedReputation;     
     }
     public void SaveData(){
 

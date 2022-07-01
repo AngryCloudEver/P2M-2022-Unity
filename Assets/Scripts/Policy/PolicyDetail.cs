@@ -29,7 +29,7 @@ public class PolicyDetail : MonoBehaviour
         {
             cameraMovement.GetComponent<CameraMovement>().isActive = false;
             this.gameObject.SetActive(true);
-            this.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = policy.title + " (Cost: " + policy.cashCost + ")";
+            this.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = policy.title + " (Cost: " + policy.cashCost + " Money)";
             this.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = policy.description;
         
             if(effectCount < 7)

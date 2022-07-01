@@ -1323,6 +1323,7 @@ MonoBehaviour:
   stats: {fileID: 1251235503}
   cameraMovement: {fileID: 645208208}
   turnManagement: {fileID: 1708468321}
+  skipTurnButton: {fileID: 1993263308}
 --- !u!1001 &85482125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1848,16 +1849,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107716717}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 571743974}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55.37256, y: -80.40002}
-  m_SizeDelta: {x: 90.45498, y: 141.20001}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 297.52405, y: -209.5214}
+  m_SizeDelta: {x: 574.748, y: 399.4425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107716719
 MonoBehaviour:
@@ -1892,18 +1893,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'RobbinFood, A series of thefts have been reported recently. Curiously,
-    the stolen goods consists exclusively of food. Police investigations report the
-    job was not particularly professional, but enough to stump them. This bill will
-    authorize the hiring of additional personel to aid the theft investigations.
-
-    PetroBigBro,The
-    fossil fuel industry is noticing the shift in attitude towards cleaner energy
-    in the populace and is making anticipatory moves. Several of the largest oil
-    companies are requesting an increase of oil price caps, potentially causing oil
-    prices to soar to record high prices as they try to lose their stock while transitioning
-    to the new markets. This bill will increase oil price caps to support companies
-    while they transition.'
+  m_Text: A major player in the food industry is eager to expand operations and is
+    requesting a forest-clearing permit, concluding that the forest was too small
+    to be productive for logging operations despite massive protests by various environmental
+    impact analysis experts. They claim the extra space would allow them to produce
+    food for less money and more efficiently and are threatening to take their business
+    elsewhere if not allowed to grow. This bill will grant the company a forest-clearing
+    permit.
 --- !u!222 &107716720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7408,8 +7404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000018552111, y: 0.000061035156}
-  m_SizeDelta: {x: -112.09001, y: -39.363068}
+  m_AnchoredPosition: {x: 0, y: -0.000015258789}
+  m_SizeDelta: {x: -51.8294, y: 64.6062}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &573116041
 PrefabInstance:
@@ -8409,13 +8405,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 571743974}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 5
   m_Viewport: {fileID: 1145247757}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1548568128}
@@ -22690,8 +22686,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096685991}
   m_HandleRect: {fileID: 1096685990}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.9999995
+  m_Size: 0.7977946
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24590,8 +24586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63.600006, y: 204.42148}
-  m_SizeDelta: {x: -167.7372, y: -446.843}
+  m_AnchoredPosition: {x: -25.744202, y: 204.4215}
+  m_SizeDelta: {x: -92.0257, y: -446.843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657151466
 MonoBehaviour:
@@ -24626,7 +24622,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RobbinFood
+  m_Text: 'FoodForPower (Cost: 3 Money)'
 --- !u!222 &1657151467
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25817,6 +25813,7 @@ MonoBehaviour:
   stats: {fileID: 1251235503}
   cameraMovement: {fileID: 645208208}
   turnManagement: {fileID: 1708468321}
+  skipTurnButton: {fileID: 1993263308}
 --- !u!1001 &1748148175
 PrefabInstance:
   m_ObjectHideFlags: 0
