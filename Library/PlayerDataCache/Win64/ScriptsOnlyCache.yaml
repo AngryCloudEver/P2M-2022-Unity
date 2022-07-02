@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - PolicyShow
     - SaveButton
     - SkipTurnButton
+    - SoundEffects
     - Status
     - StatusHover
     - TurnManagement
@@ -26,6 +27,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -52,26 +54,34 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1488}
+      Script: {instanceID: 1490}
     - Class: 114
-      Script: {instanceID: 1660}
+      Script: {instanceID: 1662}
     - Class: 114
-      Script: {instanceID: 2008}
+      Script: {instanceID: 2010}
     - Class: 114
-      Script: {instanceID: 2300}
+      Script: {instanceID: 2302}
     - Class: 114
-      Script: {instanceID: 2412}
+      Script: {instanceID: 2414}
     - Class: 114
-      Script: {instanceID: 2574}
+      Script: {instanceID: 2576}
     - Class: 114
-      Script: {instanceID: 2758}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2842}
+    - Class: 114
+      Script: {instanceID: 3364}
+    - Class: 114
+      Script: {instanceID: 4074}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -113,64 +123,72 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1488}
+      Script: {instanceID: 1490}
     - Class: 114
-      Script: {instanceID: 1538}
+      Script: {instanceID: 1540}
     - Class: 114
-      Script: {instanceID: 1578}
+      Script: {instanceID: 1580}
     - Class: 114
-      Script: {instanceID: 1632}
+      Script: {instanceID: 1634}
     - Class: 114
-      Script: {instanceID: 1660}
+      Script: {instanceID: 1662}
     - Class: 114
-      Script: {instanceID: 1698}
+      Script: {instanceID: 1700}
     - Class: 114
-      Script: {instanceID: 2008}
+      Script: {instanceID: 2010}
     - Class: 114
-      Script: {instanceID: 2076}
+      Script: {instanceID: 2078}
     - Class: 114
-      Script: {instanceID: 2130}
+      Script: {instanceID: 2132}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 2284}
     - Class: 114
-      Script: {instanceID: 2300}
+      Script: {instanceID: 2302}
     - Class: 114
-      Script: {instanceID: 2412}
+      Script: {instanceID: 2414}
     - Class: 114
-      Script: {instanceID: 2574}
+      Script: {instanceID: 2576}
     - Class: 114
-      Script: {instanceID: 2758}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2842}
     - Class: 114
-      Script: {instanceID: 3158}
+      Script: {instanceID: 3160}
     - Class: 114
-      Script: {instanceID: 3202}
+      Script: {instanceID: 3204}
     - Class: 114
-      Script: {instanceID: 3550}
+      Script: {instanceID: 3364}
     - Class: 114
-      Script: {instanceID: 3678}
+      Script: {instanceID: 3552}
     - Class: 114
-      Script: {instanceID: 3702}
+      Script: {instanceID: 3680}
     - Class: 114
-      Script: {instanceID: 3728}
+      Script: {instanceID: 3704}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 3730}
     - Class: 114
-      Script: {instanceID: 4054}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 4214}
+      Script: {instanceID: 4056}
     - Class: 114
-      Script: {instanceID: 4286}
+      Script: {instanceID: 4074}
     - Class: 114
-      Script: {instanceID: 4398}
+      Script: {instanceID: 4218}
+    - Class: 114
+      Script: {instanceID: 4290}
+    - Class: 114
+      Script: {instanceID: 4402}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -213,23 +231,27 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1488}
+      Script: {instanceID: 1490}
     - Class: 114
-      Script: {instanceID: 1660}
+      Script: {instanceID: 1662}
     - Class: 114
-      Script: {instanceID: 1768}
+      Script: {instanceID: 1770}
     - Class: 114
-      Script: {instanceID: 2008}
+      Script: {instanceID: 2010}
     - Class: 114
-      Script: {instanceID: 2300}
+      Script: {instanceID: 2302}
     - Class: 114
-      Script: {instanceID: 2412}
+      Script: {instanceID: 2414}
     - Class: 114
-      Script: {instanceID: 2574}
+      Script: {instanceID: 2576}
     - Class: 114
-      Script: {instanceID: 2758}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2842}
+    - Class: 114
+      Script: {instanceID: 3364}
+    - Class: 114
+      Script: {instanceID: 4074}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -279,7 +301,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 7bd42a7f4da47434bf8a2ea06345043a
+      Hash: ac3ad28643e5a26d30a454b2465d2283
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyRejectButton
@@ -555,13 +577,13 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: f02f7efe00c46b2b7ea0bb9f84566af8
+      Hash: 80f98593e973816dc8692cb83edda31c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameOverHandler
   - hash:
       serializedVersion: 2
-      Hash: affbd762107f86ec03395b4f96a3eed8
+      Hash: c6eee6217346cbf62be9723bd1be402f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TurnManagement
@@ -663,7 +685,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: b36fabcb39aa5c0dca7d4a6fa9cd0e31
+      Hash: 6eef71a0db5b1d0a21e69667361ecb23
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyHover
@@ -699,7 +721,7 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 3173ab8cdba64187189e33604b77ac09
+      Hash: ecdc2bbb3f056d1ad6fa0f54f018528b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SkipTurnButton
@@ -717,10 +739,16 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: b69a494d4127a0452aaaa172461ca55c
+      Hash: faa63e2d98456e9c81bafa83d518af23
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyCloseButton
+  - hash:
+      serializedVersion: 2
+      Hash: 255aefc108474e66d8a319382f3b4391
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundEffects
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -729,7 +757,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 7bd42a7f4da47434bf8a2ea06345043a
+      Hash: ac3ad28643e5a26d30a454b2465d2283
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PolicyAcceptButton
@@ -774,5 +802,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/DevScene.unity
   - Assets/Scenes/CreditScene.unity
-  playerPath: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity/BuildedGame/ECO
-    CITY.exe
+  playerPath: C:/Unity Projects/P2M-2022-Unity/BuildedGame/ECO CITY.exe
