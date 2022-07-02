@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurnManagement : MonoBehaviour
 {
+    public GameObject SFX;
     public int currentTurn;
     protected bool turnActive = true;
 
@@ -33,5 +34,11 @@ public class TurnManagement : MonoBehaviour
     public void AddTurn(){
         currentTurn++;
         PlayerPrefs.SetInt("currentTurn",currentTurn);
+        StartCoroutine(PlayNewDay());
+        
+    }
+    IEnumerator PlayNewDay(){
+        yield return new WaitForSeconds(1.5f);
+        SFX.GetComponent<SoundEffects>().PlayNewDay();
     }
 }

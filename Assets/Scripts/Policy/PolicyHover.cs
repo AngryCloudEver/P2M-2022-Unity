@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PolicyHover : MonoBehaviour
 {
+    
     public int policyId;
     public GameObject policies;
     public GameObject policyForDetail;
     public GameObject skipTurnButton;
     public GameObject cameraMovement;
+    public GameObject SFX;
 
     private Policy[] allPolicies;
     private Policy chosenPolicy;
@@ -36,6 +38,7 @@ public class PolicyHover : MonoBehaviour
             policyForDetail.SetActive(true);
             policyForDetail.GetComponent<PolicyDetail>().policy = chosenPolicy;
             skipTurnButton.GetComponent<SkipTurnButton>().policy = chosenPolicy;
+            SFX.GetComponent<SoundEffects>().PlayPick();
         }
     }
 

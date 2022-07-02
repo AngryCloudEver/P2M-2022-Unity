@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameOverHandler : MonoBehaviour
 {
+    public GameObject SFX;
     public GameObject cameraMovement;
     public GameObject statusCanvas;
     public GameObject pauseCanvas;
@@ -40,10 +41,12 @@ public class GameOverHandler : MonoBehaviour
         if(isWin == false)
         {
             winTitle.text = "YOU LOSE!";
+            SFX.GetComponent<SoundEffects>().PlayLose();
         }
         else
         {
             winTitle.text = "YOU WIN!";
+            SFX.GetComponent<SoundEffects>().PlayWin();
         }
 
         if(gameOverContent == 1)

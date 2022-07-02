@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PolicyAcceptButton : MonoBehaviour
 {
+    public GameObject SFX;
     public GameObject stats;
     public GameObject cameraMovement;
     public GameObject turnManagement;
@@ -78,6 +79,7 @@ public class PolicyAcceptButton : MonoBehaviour
         policyChosen.cooldown += 2;
         PlayerPrefs.SetInt(policyChosen.title, policyChosen.cooldown);
 
+        SFX.GetComponent<SoundEffects>().PlayPositive();
         turnManagement.GetComponent<TurnManagement>().AddTurn();
     }
 }

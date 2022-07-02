@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PolicyCloseButton : MonoBehaviour
 {
+    public GameObject SFX;
     public GameObject cameraMovement;
     public GameObject policyDetail;
     public GameObject skipTurnButton;
@@ -25,5 +26,6 @@ public class PolicyCloseButton : MonoBehaviour
         cameraMovement.GetComponent<CameraMovement>().isActive = true;
         policyDetail.SetActive(false);
         skipTurnButton.GetComponent<SkipTurnButton>().policy = null;
+        SFX.GetComponent<SoundEffects>().PlayPick();
     }
 }

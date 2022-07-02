@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkipTurnButton : MonoBehaviour
 {
+    public GameObject SFX;
     public GameObject turnManagement;
     public Policy policy = null;
 
@@ -22,6 +23,7 @@ public class SkipTurnButton : MonoBehaviour
     {
         if(policy == null)
         {
+            SFX.GetComponent<SoundEffects>().PlayPick();
             turnManagement.GetComponent<TurnManagement>().AddTurn();
         }
     }
