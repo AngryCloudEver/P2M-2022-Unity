@@ -52,4 +52,7 @@ public class MenuButton : MonoBehaviour
     public void OpenMain(){
         SceneManager.LoadScene("MainScene");
     }
+    public void OpenTutorial(){
+        SceneManager.LoadScene("TutorialScene");
+    }
 }
