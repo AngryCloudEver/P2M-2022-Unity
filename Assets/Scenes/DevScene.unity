@@ -1774,6 +1774,7 @@ MonoBehaviour:
   winTitle: {fileID: 432964231}
   winDescription: {fileID: 1649922791}
   gameOverText: 0
+  isGameOver: 0
 --- !u!114 &103373418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23727,8 +23728,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096685991}
   m_HandleRect: {fileID: 1096685990}
   m_Direction: 2
-  m_Value: 1.0000005
-  m_Size: 0.79779464
+  m_Value: 0.99999905
+  m_Size: 0.79779434
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -26342,6 +26343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92585dd0c5650584ea6b39ea56492d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverHandler: {fileID: 103373417}
   SFX: {fileID: 670877130}
   currentTurn: 1
 --- !u!4 &1708468323

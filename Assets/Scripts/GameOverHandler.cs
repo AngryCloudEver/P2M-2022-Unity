@@ -13,6 +13,7 @@ public class GameOverHandler : MonoBehaviour
     public Text winTitle, winDescription;
 
     public int gameOverText;
+    public bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class GameOverHandler : MonoBehaviour
 
     void SetGameOver(bool isWin, int gameOverContent)
     {
+    
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         cameraMovement.GetComponent<CameraMovement>().isActive = false;
         statusCanvas.SetActive(false);
@@ -41,12 +43,19 @@ public class GameOverHandler : MonoBehaviour
         if(isWin == false)
         {
             winTitle.text = "YOU LOSE!";
-            SFX.GetComponent<SoundEffects>().PlayLose();
+            if(!isGameOver){
+                SFX.GetComponent<SoundEffects>().PlayLose();
+                DeclareGameOver();
+            }
+            
         }
         else
         {
             winTitle.text = "YOU WIN!";
+            if(!isGameOver){
             SFX.GetComponent<SoundEffects>().PlayWin();
+            DeclareGameOver();
+            }
         }
 
         if(gameOverContent == 1)
@@ -70,4 +79,9 @@ public class GameOverHandler : MonoBehaviour
             winDescription.text = "You successfully cleaned the city, your city is free from pollution!";
         }
     }
+
+    void DeclareGameOver(){
+        isGameOver = true;
+    }
+    
 }
