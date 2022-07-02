@@ -228,7 +228,7 @@ public class Status : MonoBehaviour
 
     private int randomRng;
 
-    public GameObject turn, policyShow;
+    public GameObject turn, policyShow, policyStatus;
     public Text moneyText, industryText, reputationText, pollutionText, powerText, turnText, foodText;
 
     public int gameOverText = -1;
@@ -249,9 +249,9 @@ public class Status : MonoBehaviour
         moneyText.text = "" + money.playerAmount;
         powerText.text = "" + powerAmount + "/" + maxPowerAmount;
         industryText.text = "" + Mathf.Round(industry.playerAmount);
-        reputationText.text = "" + reputation.playerAmount;
+        reputationText.text = "" + reputation.playerAmount + "/20";
         pollutionText.text = "" + pollution.playerAmount;
-        foodText.text = "" + food.playerAmount;
+        foodText.text = "" + food.playerAmount + "/20";
         turnText.text = "Month " + turn.GetComponent<TurnManagement>().getTurn();
     }
 
@@ -261,22 +261,32 @@ public class Status : MonoBehaviour
         food.playerAmount -= 1;
 
         // Produce Power
-        for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
+        if(powerAmount < 20)
         {
-            Power chosenPower = null;
-            do
+            for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
             {
-                chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
+                Power chosenPower = null;
 
-                if(chosenPower != null)
+                do
                 {
-                    AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
-                    chosenPower.playerAmount++;
-                    PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
-                    SubtractMoney(chosenPower.cost);
-                    AddPollution(chosenPower.pollution);
+                    chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
+
+                    if (chosenPower != null)
+                    {
+                        AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
+                        chosenPower.playerAmount++;
+                        PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
+                        SubtractMoney(chosenPower.cost);
+                        AddPollution(chosenPower.pollution);
+                        powerAmount++;
+                    }
+                } while (chosenPower == null);
+
+                if(powerAmount == 20)
+                {
+                    i = Mathf.RoundToInt(industry.playerAmount);
                 }
-            } while (chosenPower == null);
+            }
         }
 
         // Produce Food
@@ -316,6 +326,13 @@ public class Status : MonoBehaviour
         if (reputation.playerAmount > 30)
         {
             reputation.playerAmount = 30;
+        }
+
+        // Check Power Cap
+        while (powerAmount > 20)
+        {
+            Power.AddPower(powers, -1);
+            powerAmount--;
         }
 
         // Vibe Check
@@ -388,7 +405,6 @@ public class Status : MonoBehaviour
 
     public void SubtractPowerAmount (int removedPower){
         powerAmount -= removedPower;
-        
     }
 
     public void AddPollution(int addedPollution)
@@ -419,7 +435,7 @@ public class Status : MonoBehaviour
         PlayerPrefs.SetFloat("industry",industry.playerAmount);
         PlayerPrefs.SetInt("reputation", reputation.playerAmount);
         policyShow.GetComponent<PolicyShow>().SaveAvailablePolicies();
-        
+        policyStatus.GetComponent<PolicyScript>().SaveCooldownPolicies();
     }
     public void LoadData(){
         int tempPowerAmount = 0;

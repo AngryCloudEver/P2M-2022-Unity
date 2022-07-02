@@ -77,7 +77,6 @@ public class PolicyAcceptButton : MonoBehaviour
             stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectAccept);
         }
         policyChosen.cooldown += 2;
-        PlayerPrefs.SetInt(policyChosen.title, policyChosen.cooldown);
 
         SFX.GetComponent<SoundEffects>().PlayPositive();
         turnManagement.GetComponent<TurnManagement>().AddTurn();

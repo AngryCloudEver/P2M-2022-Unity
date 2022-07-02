@@ -57,7 +57,7 @@ public class PolicyScript : MonoBehaviour
     
     void AddToDictionary(){ 
         for(int i=1; i<=policies.Length; i++){
-        policyDictionary.Add(i, policies[i-1]);
+            policyDictionary.Add(i, policies[i-1]);
         }
     }
 
@@ -65,7 +65,6 @@ public class PolicyScript : MonoBehaviour
     {
         Policy.reduceTurnCooldown(policies);
     }
- 
 
     public Policy[] getPolicies()
     {
@@ -79,7 +78,6 @@ public class PolicyScript : MonoBehaviour
         {
             availablePolicies = Policy.getRandomPolicies(availablePolicies, availablePolicies.Length);
         }
-        
 
         return availablePolicies;
     }
@@ -91,7 +89,23 @@ public class PolicyScript : MonoBehaviour
         savedPolicies[0] = policyDictionary[firstID];
         savedPolicies[1] = policyDictionary[secondID];
         savedPolicies[2] = policyDictionary[thirdID];
+
+        foreach(var policy in policies)
+        {
+            if (PlayerPrefs.HasKey(policy.title))
+            {
+                policy.cooldown = PlayerPrefs.GetInt(policy.title);
+            }
+        }
+
         return savedPolicies;
     }
     
+    public void SaveCooldownPolicies()
+    {
+        foreach (var policy in policies)
+        {
+            PlayerPrefs.SetInt(policy.title, policy.cooldown);
+        }
+    }
 }

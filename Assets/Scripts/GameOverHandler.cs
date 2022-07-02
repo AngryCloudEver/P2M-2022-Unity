@@ -27,7 +27,14 @@ public class GameOverHandler : MonoBehaviour
         gameOverText = statusCanvas.GetComponent<Status>().gameOverText;
         if (gameOverText != -1)
         {
-            SetGameOver(false, gameOverText);
+            if(gameOverText != 4)
+            {
+                SetGameOver(false, gameOverText);
+            }
+            else
+            {
+                SetGameOver(true, gameOverText);
+            }
         }
     }
 

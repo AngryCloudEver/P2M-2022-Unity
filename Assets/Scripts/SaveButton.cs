@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveButton : MonoBehaviour
 {
     public GameObject status;
+    public GameObject gameSavedCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -21,5 +22,6 @@ public class SaveButton : MonoBehaviour
     void OnMouseDown()
     {
         status.GetComponent<Status>().SaveData();
+        gameSavedCanvas.SetActive(true);
     }
 }

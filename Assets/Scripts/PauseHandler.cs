@@ -6,6 +6,8 @@ public class PauseHandler : MonoBehaviour
 {
     public GameObject cameraMovement;
     public GameObject statusCanvas;
+    public GameObject gameSavedCanvas;
+
     private bool isPaused;
 
     // Start is called before the first frame update
@@ -37,6 +39,7 @@ public class PauseHandler : MonoBehaviour
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 cameraMovement.GetComponent<CameraMovement>().isActive = true;
                 statusCanvas.SetActive(true);
+                gameSavedCanvas.SetActive(false);
                 StartCoroutine(PauseGame(false));
             }
         }
