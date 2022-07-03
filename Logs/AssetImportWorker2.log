@@ -15,11 +15,11 @@ C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-20
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-51097
+58360
 Successfully changed project path to: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity
 C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 1614.34 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 447.94 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -35,5 +35,5 @@ Initialize mono
 Mono path[0] = 'D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Aplikasi/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56740
 Begin MonoManager ReloadAssembly
