@@ -5,7 +5,15 @@ using UnityEngine;
 public class SoundEffects : MonoBehaviour
 {
     public AudioSource hoverAudioSource,pickAudioSource,positiveAudioSource,negativeAudioSource,winAudioSource,loseAudioSource,newDayAudioSource;
-    public float volume = 0.5f;
+    public float volume;
+
+    private void Awake() {
+        volume = PlayerPrefs.GetFloat("sfxVolume",0.5f);
+    }
+    
+    private void Update() {
+        volume = PlayerPrefs.GetFloat("sfxVolume",0.5f);
+    }
     
     public void PlayHover(){
         hoverAudioSource.PlayOneShot(hoverAudioSource.clip,volume);

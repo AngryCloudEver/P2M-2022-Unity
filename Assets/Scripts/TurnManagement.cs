@@ -35,7 +35,7 @@ public class TurnManagement : MonoBehaviour
     public void AddTurn(){
         currentTurn++;
         PlayerPrefs.SetInt("currentTurn",currentTurn);
-        if(!gameOverHandler.GetComponent<GameOverHandler>().isGameOver){
+        if(gameOverHandler.GetComponent<GameOverHandler>().isGameOver==false){
             StartCoroutine(PlayNewDay());
         }
         
