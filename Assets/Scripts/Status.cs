@@ -249,7 +249,7 @@ public class Status : MonoBehaviour
         moneyText.text = "" + money.playerAmount;
         powerText.text = "" + powerAmount + "/" + maxPowerAmount;
         industryText.text = "" + Mathf.Round(industry.playerAmount);
-        reputationText.text = "" + reputation.playerAmount + "/20";
+        reputationText.text = "" + reputation.playerAmount + "/30";
         pollutionText.text = "" + pollution.playerAmount;
         foodText.text = "" + food.playerAmount + "/20";
         turnText.text = "Month " + turn.GetComponent<TurnManagement>().getTurn();
@@ -290,16 +290,19 @@ public class Status : MonoBehaviour
         }
 
         // Produce Food
-        AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
-        SubtractMoney(food.moneyCost);
+        if (food.playerAmount < 20)
+        {
+            AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
+            SubtractMoney(food.moneyCost);
 
-        Power.AddPower(powers, food.powerCost * -1);
+            Power.AddPower(powers, food.powerCost * -1);
 
-        SubtractPowerAmount(food.powerCost);
-        AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
+            SubtractPowerAmount(food.powerCost);
+            AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
 
-        // Pollution from producing food
-        AddPollution(1);
+            // Pollution from producing food
+            AddPollution(1);
+        }
 
         // Pollution Dissipates Reduction
         AddPollution(-1);

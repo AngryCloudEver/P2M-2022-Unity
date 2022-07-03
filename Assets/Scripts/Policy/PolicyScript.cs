@@ -82,13 +82,38 @@ public class PolicyScript : MonoBehaviour
         return availablePolicies;
     }
     public Policy[] loadPolicies(){
-        Policy[] savedPolicies = new Policy[3];
-        int firstID = PlayerPrefs.GetInt("firstPolicy");
-        int secondID = PlayerPrefs.GetInt("secondPolicy");
-        int thirdID = PlayerPrefs.GetInt("thirdPolicy");
-        savedPolicies[0] = policyDictionary[firstID];
-        savedPolicies[1] = policyDictionary[secondID];
-        savedPolicies[2] = policyDictionary[thirdID];
+        Policy[] savedPolicies = null;
+
+        if (PlayerPrefs.HasKey("firstPolicy"))
+        {
+            int firstID = PlayerPrefs.GetInt("firstPolicy");
+
+            if (PlayerPrefs.HasKey("secondPolicy"))
+            {
+                int secondID = PlayerPrefs.GetInt("secondPolicy");
+
+                if (PlayerPrefs.HasKey("thirdPolicy"))
+                {
+                    int thirdID = PlayerPrefs.GetInt("thirdPolicy");
+
+                    savedPolicies = new Policy[3];
+                    savedPolicies[0] = policyDictionary[firstID];
+                    savedPolicies[1] = policyDictionary[secondID];
+                    savedPolicies[2] = policyDictionary[thirdID];
+                }
+                else
+                {
+                    savedPolicies = new Policy[2];
+                    savedPolicies[0] = policyDictionary[firstID];
+                    savedPolicies[1] = policyDictionary[secondID];
+                }
+            }
+            else
+            {
+                savedPolicies = new Policy[1];
+                savedPolicies[0] = policyDictionary[firstID];
+            }
+        }
 
         foreach(var policy in policies)
         {

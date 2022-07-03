@@ -107,6 +107,9 @@ public class PolicyShow : MonoBehaviour
 
     public void SaveAvailablePolicies()
     {
+        PlayerPrefs.DeleteKey("firstPolicy");
+        PlayerPrefs.DeleteKey("secondPolicy");
+        PlayerPrefs.DeleteKey("thirdPolicy");
         if (availablePolicies.Length >= 1) { PlayerPrefs.SetInt("firstPolicy", availablePolicies[0].id); }
         if (availablePolicies.Length >= 2) { PlayerPrefs.SetInt("secondPolicy", availablePolicies[1].id); }
         if (availablePolicies.Length == 3) { PlayerPrefs.SetInt("thirdPolicy", availablePolicies[2].id); }

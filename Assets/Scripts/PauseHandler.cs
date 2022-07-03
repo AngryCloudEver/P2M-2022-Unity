@@ -47,7 +47,7 @@ public class PauseHandler : MonoBehaviour
 
     private IEnumerator PauseGame(bool pauseState)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         isPaused = pauseState;
     }
 }
