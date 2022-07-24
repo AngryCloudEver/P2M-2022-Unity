@@ -685,7 +685,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 36361911f4ef87ff199c279081264eeb
+      Hash: b0206c13d0a38899e71bcff1a0586dfd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TutorialTraverse
@@ -954,5 +954,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/CreditScene.unity
   - Assets/Scenes/TutorialScene.unity
   - Assets/Scenes/SettingsScene.unity
-  playerPath: C:/Users/User/OneDrive - Bina Nusantara University/BGDC/P2M/Unity Version/P2M-2022-Unity/BuildedGame/ECO
-    CITY.exe
+  playerPath: C:/Unity Projects/P2M-2022-Unity/BuildedGame/ECO CITY.exe
