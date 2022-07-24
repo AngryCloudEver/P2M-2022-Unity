@@ -257,8 +257,9 @@ public class Status : MonoBehaviour
 
     public void newTurn()
     {
-        
-        // Produce Power
+        // Check Debt Status
+        if(money.playerAmount<0 == false){ //As long as the player isn't in debt, power and food will be generated
+            // Produce Power
         if(powerAmount < 20)
         {
             for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
@@ -301,6 +302,10 @@ public class Status : MonoBehaviour
             // Pollution from producing food
             AddPollution(1);
         }
+        }
+        
+        
+        
 
         // Pollution Dissipates Reduction
         AddPollution(-1);
