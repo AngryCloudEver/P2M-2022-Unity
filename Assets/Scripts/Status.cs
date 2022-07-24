@@ -257,9 +257,7 @@ public class Status : MonoBehaviour
 
     public void newTurn()
     {
-        // Food Consumption
-        food.playerAmount -= 1;
-
+        
         // Produce Power
         if(powerAmount < 20)
         {
