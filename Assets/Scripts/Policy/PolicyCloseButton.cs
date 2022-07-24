@@ -24,6 +24,7 @@ public class PolicyCloseButton : MonoBehaviour
     void OnMouseDown()
     {
         cameraMovement.GetComponent<CameraMovement>().isActive = true;
+        policyDetail.GetComponent<PolicyDetail>().effectCount = 0;
         policyDetail.SetActive(false);
         skipTurnButton.GetComponent<SkipTurnButton>().policy = null;
         SFX.GetComponent<SoundEffects>().PlayPick();

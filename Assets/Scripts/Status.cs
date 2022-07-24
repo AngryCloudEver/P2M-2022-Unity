@@ -258,54 +258,50 @@ public class Status : MonoBehaviour
     public void newTurn()
     {
         // Check Debt Status
-        if(money.playerAmount<0 == false){ //As long as the player isn't in debt, power and food will be generated
+        if(money.playerAmount >= 0){ //As long as the player isn't in debt, power and food will be generated
             // Produce Power
-        if(powerAmount < 20)
-        {
-            for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
+            if(powerAmount < 20)
             {
-                Power chosenPower = null;
-
-                do
+                for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
                 {
-                    chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
+                    Power chosenPower = null;
 
-                    if (chosenPower != null)
+                    do
                     {
-                        AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
-                        chosenPower.playerAmount++;
-                        PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
-                        SubtractMoney(chosenPower.cost);
-                        AddPollution(chosenPower.pollution);
-                        powerAmount++;
-                    }
-                } while (chosenPower == null);
+                        chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
 
-                if(powerAmount == 20)
-                {
-                    i = Mathf.RoundToInt(industry.playerAmount);
+                        if (chosenPower != null)
+                        {
+                            AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
+                            chosenPower.playerAmount++;
+                            PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
+                            SubtractMoney(chosenPower.cost);
+                            AddPollution(chosenPower.pollution);
+                            powerAmount++;
+                        }
+                    } while (chosenPower == null);
+
+                    if(powerAmount == 20)
+                    {
+                        i = Mathf.RoundToInt(industry.playerAmount);
+                    }
                 }
             }
-        }
 
-        // Produce Food
-        if (food.playerAmount < 20)
-        {
-            AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
-            SubtractMoney(food.moneyCost);
+            // Produce Food
+            if (food.playerAmount < 20)
+            {
+                AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
+                SubtractMoney(food.moneyCost);
 
-            Power.AddPower(powers, food.powerCost * -1);
+                SubtractPowerAmount(food.powerCost);
 
-            SubtractPowerAmount(food.powerCost);
-            AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
+                AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
 
-            // Pollution from producing food
-            AddPollution(1);
-        }
-        }
-        
-        
-        
+                // Pollution from producing food
+                AddPollution(1);
+            }
+        }        
 
         // Pollution Dissipates Reduction
         AddPollution(-1);
