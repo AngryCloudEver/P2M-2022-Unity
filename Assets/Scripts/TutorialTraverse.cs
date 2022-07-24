@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TutorialTraverse : MonoBehaviour
 {
     public GameObject[] tutorials;
-    public GameObject closeButton,previousButton,nextButton;
+    public GameObject previousButton,nextButton;
     int index = 0;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class TutorialTraverse : MonoBehaviour
         }
         else{
             nextButton.SetActive(true);
-            closeButton.SetActive(false);
+            // closeButton.SetActive(false);
         }
 
     }
@@ -41,7 +41,7 @@ public class TutorialTraverse : MonoBehaviour
         tutorials[index].gameObject.SetActive(true);
         }
         if(index==2){
-            closeButton.SetActive(true);
+            // closeButton.SetActive(true);
             nextButton.SetActive(false);
         }
         else{
