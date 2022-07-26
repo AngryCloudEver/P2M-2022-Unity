@@ -23,6 +23,7 @@ public class SkipTurnButton : MonoBehaviour
     {
         if(policy == null)
         {
+            this.gameObject.GetComponentInParent<Status>().industryEffect();
             SFX.GetComponent<SoundEffects>().PlayPick();
             turnManagement.GetComponent<TurnManagement>().AddTurn();
         }

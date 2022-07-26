@@ -34,6 +34,8 @@ public class PolicyRejectButton : MonoBehaviour
         gameObject.transform.parent.gameObject.SetActive(false);
         skipTurnButton.GetComponent<SkipTurnButton>().policy = null;
 
+        stats.gameObject.GetComponent<Status>().industryEffect();
+
         // Applying Effects
         stats.GetComponent<Status>().AddMoney(policyChosen.cashCost * -1);
         stats.GetComponent<Status>().AddMoney(policyChosen.cashEffectReject);

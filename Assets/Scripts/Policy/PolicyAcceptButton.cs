@@ -34,6 +34,8 @@ public class PolicyAcceptButton : MonoBehaviour
         gameObject.transform.parent.gameObject.SetActive(false);
         skipTurnButton.GetComponent<SkipTurnButton>().policy = null;
 
+        stats.gameObject.GetComponent<Status>().industryEffect();
+
         // Applying Effects
         if (policyChosen.id == 4)
         {
