@@ -255,6 +255,8 @@ public class Status : MonoBehaviour
         turnText.text = "Month " + turn.GetComponent<TurnManagement>().getTurn();
     }
 
+    
+
     public void newTurn()
     {
         // Check Debt Status
@@ -287,6 +289,11 @@ public class Status : MonoBehaviour
                     }
                 }
             }
+            else{
+                // Produce Idle Pollution
+                AddPollution(Random.Range(1,3)); //Coal's Idle Pollution
+                AddPollution(Random.Range(0,2)); //Hydro's Idle Pollution
+            }
 
             // Produce Food
             if (food.playerAmount < 20)
@@ -300,6 +307,10 @@ public class Status : MonoBehaviour
 
                 // Pollution from producing food
                 AddPollution(1);
+            }
+            else{
+                // Produce Idle Pollution
+                AddPollution(Random.Range(0,2));
             }
         }        
 
@@ -454,23 +465,7 @@ public class Status : MonoBehaviour
         reputation.playerAmount = PlayerPrefs.GetInt("reputation",20);
     }
 
-    public void FactoryReset(){ //for testing purposes
-        // PlayerPrefs.DeleteKey("firstPolicy");
-        // PlayerPrefs.DeleteKey("secondPolicy");
-        // PlayerPrefs.DeleteKey("thirdPolicy");
-        // PlayerPrefs.DeleteKey("Oil");
-        // PlayerPrefs.DeleteKey("Tidal");
-        // PlayerPrefs.DeleteKey("money");
-        // PlayerPrefs.DeleteKey("foodAmount");
-        // PlayerPrefs.DeleteKey("pollution");
-        // PlayerPrefs.DeleteKey("industry");
-        // PlayerPrefs.DeleteKey("reputation");
-        money.playerAmount = 10;
-        food.playerAmount = 10;
-        pollution.playerAmount = 10;
-        industry.playerAmount = 1f;
-        reputation.playerAmount = 20;
-    }
+    
 
     // Start is called before the first frame update
     void Start()
