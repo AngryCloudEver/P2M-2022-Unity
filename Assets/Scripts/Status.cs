@@ -344,11 +344,15 @@ public class Status : MonoBehaviour
                     }
                 }
             }
+            else{ //Produce Power's Idle Pollution
+                AddPollution(Random.Range(1, 3)); //Coal's Idle Pollution
+                AddPollution(Random.Range(0, 2)); //Hydro's Idle Pollution
+            }
 
-            // Produce Idle Pollution
+            // Produce Food's Idle Pollution
             if(money.playerAmount < food.moneyCost)
             { 
-                AddPollution(Random.Range(0,1));
+                AddPollution(Random.Range(0,2));
             }
             else
             {
@@ -372,7 +376,7 @@ public class Status : MonoBehaviour
             // Produce Idle Pollution
             AddPollution(Random.Range(1, 3)); //Coal's Idle Pollution
             AddPollution(Random.Range(0, 2)); //Hydro's Idle Pollution
-            AddPollution(Random.Range(0, 1)); //Food's Idle Pollution
+            AddPollution(Random.Range(0, 2)); //Food's Idle Pollution
         }
 
         // Pollution Dissipates Reduction
