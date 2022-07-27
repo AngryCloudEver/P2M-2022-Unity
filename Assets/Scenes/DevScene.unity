@@ -27323,7 +27323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 3 Money'
+  m_Text: 'Cost: 3 Gold'
 --- !u!222 &1733380571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28664,6 +28664,7 @@ MonoBehaviour:
   - {fileID: 207368284}
   - {fileID: 1784965953}
   - {fileID: 577675579}
+  effectCount: 0
 --- !u!114 &1847851820
 MonoBehaviour:
   m_ObjectHideFlags: 0

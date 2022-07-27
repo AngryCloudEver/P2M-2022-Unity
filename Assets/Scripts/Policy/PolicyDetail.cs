@@ -31,7 +31,7 @@ public class PolicyDetail : MonoBehaviour
             this.gameObject.SetActive(true);
             this.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = policy.title;
             this.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = policy.description;
-            this.gameObject.transform.GetChild(2).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Cost: " + policy.cashCost + " Money";
+            this.gameObject.transform.GetChild(2).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Cost: " + policy.cashCost + " Gold";
 
             if(effectCount == 0)
             {
