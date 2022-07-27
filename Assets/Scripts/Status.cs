@@ -62,6 +62,7 @@ public class Status : MonoBehaviour
         public int cost;
         public int pollution;
         public int playerAmount;
+        public bool restricted;
 
         private int defaultPlayerAmount;
 
@@ -71,6 +72,7 @@ public class Status : MonoBehaviour
             cost = powerCost;
             pollution = powerPollution;
             playerAmount = defaultPlayerAmount = powerPlayerAmount;
+            restricted = false;
         }
 
         static public Power selectPowerToUse(Power[] powers, int money)
@@ -94,6 +96,14 @@ public class Status : MonoBehaviour
             }
 
             return chosenPower;
+        }
+
+        static public void resetRestricted(Power[] powers)
+        {
+            foreach(var power in powers)
+            {
+                power.restricted = false;
+            }
         }
 
         static public void AddPower(Power[] powers, int powerAmount)
@@ -152,12 +162,6 @@ public class Status : MonoBehaviour
                     if (powers[powerToUse].playerAmount > 0)
                     {
                         powers[powerToUse].playerAmount += 1;
-                        // if(powers[powerToUse].name.Equals("Oil")){
-                        //         PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                        //     }
-                        // if(powers[powerToUse].name.Equals("Tidal")){
-                        //         PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                        //     }
                         powerReduced = true;
                     }
                 }
@@ -176,12 +180,6 @@ public class Status : MonoBehaviour
                     if (powers[powerToUse].playerAmount > 0)
                     {
                         powers[powerToUse].playerAmount -= 1;
-                        // if(powers[powerToUse].name.Equals("Oil")){
-                        //         PlayerPrefs.SetInt("Oil",powers[powerToUse].playerAmount);
-                        //     }
-                        // if(powers[powerToUse].name.Equals("Tidal")){
-                        //         PlayerPrefs.SetInt("Tidal",powers[powerToUse].playerAmount);
-                        // }
                         powerReduced = true;
                     }
                 }
@@ -236,9 +234,10 @@ public class Status : MonoBehaviour
     // Menghitung jumlah total power
     int CalculatePower()
     {
+        powerAmount = 0;
+
         foreach (var power in powers)
         {
-            power.playerAmount = power.playerAmount;
             powerAmount += power.playerAmount;
         }
 
@@ -247,7 +246,7 @@ public class Status : MonoBehaviour
     void DisplayStats()
     {
         moneyText.text = "" + money.playerAmount;
-        powerText.text = "" + powerAmount + "/" + maxPowerAmount;
+        powerText.text = "" + CalculatePower() + "/" + maxPowerAmount;
         industryText.text = "" + Mathf.Round(industry.playerAmount);
         reputationText.text = "" + reputation.playerAmount + "/30";
         pollutionText.text = "" + pollution.playerAmount;
@@ -286,7 +285,6 @@ public class Status : MonoBehaviour
         while (powerAmount > 20)
         {
             Power.AddPower(powers, -1);
-            powerAmount--;
         }
 
         // Vibe Check
@@ -317,9 +315,11 @@ public class Status : MonoBehaviour
         // Check Debt Status
         if(money.playerAmount > 0){ //As long as the player isn't in debt, power and food will be generated
             // Produce Power
-            if(powerAmount < 20)
+            if(CalculatePower() < 20)
             {
-                for (int i = 0; i < Mathf.RoundToInt(industry.playerAmount); i++)
+                Power.resetRestricted(powers);
+
+                for (int i = 0; i < 3; i++)
                 {
                     Power chosenPower = null;
 
@@ -327,20 +327,26 @@ public class Status : MonoBehaviour
                     {
                         chosenPower = Power.selectPowerToUse(powers, money.playerAmount);
 
+                        if(chosenPower != null && chosenPower.restricted == true)
+                        {
+                            chosenPower = null;
+                        }
+
                         if (chosenPower != null)
                         {
                             AddPowerAmount(Mathf.RoundToInt(1 * industry.playerAmount));
                             chosenPower.playerAmount++;
-                            PlayerPrefs.SetInt(chosenPower.name, chosenPower.playerAmount);
+                            chosenPower.restricted = true;
                             SubtractMoney(chosenPower.cost);
                             AddPollution(chosenPower.pollution);
-                            powerAmount++;
+
+                            Debug.Log(chosenPower.name);
                         }
                     } while (chosenPower == null);
 
-                    if(powerAmount == 20)
+                    if(CalculatePower() == 20 && money.playerAmount <= 0)
                     {
-                        i = Mathf.RoundToInt(industry.playerAmount);
+                        i = 3;
                     }
                 }
             }
@@ -362,7 +368,7 @@ public class Status : MonoBehaviour
                     AddFood(Mathf.RoundToInt(food.foodProduced * industry.playerAmount));
                     SubtractMoney(food.moneyCost);
 
-                    SubtractPowerAmount(food.powerCost);
+                    Power.AddPower(powers, food.powerCost * -1);
 
                     AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
 
