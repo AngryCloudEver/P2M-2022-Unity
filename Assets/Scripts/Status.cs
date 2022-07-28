@@ -221,8 +221,9 @@ public class Status : MonoBehaviour
     Reputation reputation = new Reputation(20);
     Pollution pollution = new Pollution(10);
     public int powerAmount, maxPowerAmount = 20;
+    public int maxReputation = 100;
     public int minMoneyGainAfterProducingFood = -3;
-    public int maxMoneyGainAfterProducingFood = 3;
+    public int maxMoneyGainAfterProducingFood = 9;
 
     private int randomRng;
 
@@ -257,11 +258,7 @@ public class Status : MonoBehaviour
     
     public void newTurn()
     {
-        // Check Money Cap
-        if (money.playerAmount > 20)
-        {
-            money.playerAmount = 20;
-        }
+        
 
         // Check Food Cap
         if (food.playerAmount > 20)
@@ -276,9 +273,9 @@ public class Status : MonoBehaviour
         }
 
         // Check Reputation Cap
-        if (reputation.playerAmount > 30)
+        if (reputation.playerAmount > maxReputation)
         {
-            reputation.playerAmount = 30;
+            reputation.playerAmount = maxReputation;
         }
 
         // Check Power Cap
@@ -370,7 +367,7 @@ public class Status : MonoBehaviour
 
                     Power.AddPower(powers, food.powerCost * -1);
 
-                    AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood));
+                    AddMoney(Random.Range(minMoneyGainAfterProducingFood, maxMoneyGainAfterProducingFood + 1));
 
                     // Pollution from producing food
                     AddPollution(1);

@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class StatusHover : MonoBehaviour
 {
     private GameObject hoverText;
+    private GameObject hoverImage;
     // Start is called before the first frame update
     void Start()
     {
-        hoverText = this.gameObject.transform.GetChild(0).gameObject;
+        hoverText = this.gameObject.transform.GetChild(1).gameObject;
+        hoverImage = this.gameObject.transform.GetChild(0).gameObject;
         hoverText.SetActive(false);
+        hoverImage.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,10 +25,12 @@ public class StatusHover : MonoBehaviour
     void OnMouseOver()
     {
         hoverText.SetActive(true);
+        hoverImage.SetActive(true);
     }
 
     void OnMouseExit()
     {
         hoverText.SetActive(false);
+        hoverImage.SetActive(false);
     }
 }
