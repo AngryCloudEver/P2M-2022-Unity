@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PolicyShow : MonoBehaviour
 {
+    
     public GameObject policyList;
     public GameObject policyHover;
     public GameObject[] policySource;
@@ -77,7 +78,9 @@ public class PolicyShow : MonoBehaviour
                 {
                     stats.GetComponent<Status>().newTurn();
                 }
+                
                 Policy.reduceTurnCooldown(policyList.GetComponent<PolicyScript>().policies);
+                policyList.GetComponent<PolicyScript>().PrintCooldownPolicies();
                 availablePolicies = policyList.GetComponent<PolicyScript>().getPolicies();
             }
             policyCount = availablePolicies.Length;

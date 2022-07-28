@@ -37,14 +37,14 @@ public class PolicyRejectButton : MonoBehaviour
         stats.gameObject.GetComponent<Status>().industryEffect();
 
         // Applying Effects
-        stats.GetComponent<Status>().AddMoney(policyChosen.cashCost * -1);
+        stats.GetComponent<Status>().SubtractMoney(policyChosen.cashCost);
         stats.GetComponent<Status>().AddMoney(policyChosen.cashEffectReject);
         stats.GetComponent<Status>().AddFood(policyChosen.foodEffectReject);
         stats.GetComponent<Status>().AddPower(policyChosen.powerEffectReject);
         stats.GetComponent<Status>().AddPollution(policyChosen.pollutionEffectReject);
         stats.GetComponent<Status>().AddIndustry(policyChosen.industryEffectReject);
         stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectReject);
-        policyChosen.cooldown += 2;
+        policyChosen.cooldown += 1;
 
         SFX.GetComponent<SoundEffects>().PlayNegative();
         turnManagement.GetComponent<TurnManagement>().AddTurn();

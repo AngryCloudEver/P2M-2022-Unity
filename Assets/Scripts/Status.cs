@@ -281,6 +281,7 @@ public class Status : MonoBehaviour
         {
             Power.AddPower(powers, -1);
         }
+        Power.resetRestricted(powers);
 
         // Vibe Check
         if (money.playerAmount < -10)
@@ -309,10 +310,11 @@ public class Status : MonoBehaviour
     {
         // Check Debt Status
         if(money.playerAmount > 0){ //As long as the player isn't in debt, power and food will be generated
+            
             // Produce Power
             if(CalculatePower() < 20)
             {
-                Power.resetRestricted(powers);
+                
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -337,7 +339,7 @@ public class Status : MonoBehaviour
                         }
                     } while (chosenPower == null);
 
-                    if(CalculatePower() == 20 && money.playerAmount <= 0)
+                    if(CalculatePower() >= 20 || money.playerAmount <= 0)
                     {
                         i = 3;
                     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Policy
 {
+    
     // Must Have
     public int id;
     public string title;
@@ -49,7 +50,7 @@ public class Policy
         Policy[] availablePolicies = new Policy[policies.Length];
         int index = 0;
 
-
+        
         foreach (var policy in policies)
         {
             if (policy.cooldown == 0)
@@ -108,5 +109,8 @@ public class Policy
                 PlayerPrefs.SetInt(policy.title, policy.cooldown);
             }
         }
+                
     }
+
+    
 }

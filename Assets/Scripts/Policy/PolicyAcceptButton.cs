@@ -69,7 +69,7 @@ public class PolicyAcceptButton : MonoBehaviour
         }
         else
         {
-            stats.GetComponent<Status>().AddMoney(policyChosen.cashCost * -1);
+            stats.GetComponent<Status>().SubtractMoney(policyChosen.cashCost);
             stats.GetComponent<Status>().AddMoney(policyChosen.cashEffectAccept);
             stats.GetComponent<Status>().AddFood(policyChosen.foodEffectAccept);
             stats.GetComponent<Status>().AddPower(policyChosen.powerEffectAccept);
@@ -77,7 +77,7 @@ public class PolicyAcceptButton : MonoBehaviour
             stats.GetComponent<Status>().AddIndustry(policyChosen.industryEffectAccept);
             stats.GetComponent<Status>().AddReputation(policyChosen.reputationEffectAccept);
         }
-        policyChosen.cooldown += 2;
+        policyChosen.cooldown += 1;
 
         SFX.GetComponent<SoundEffects>().PlayPositive();
         turnManagement.GetComponent<TurnManagement>().AddTurn();

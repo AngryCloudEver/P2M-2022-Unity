@@ -31,7 +31,7 @@ public class PolicyScript : MonoBehaviour
            "PolicySource4", 1,-2,0,0,0,0.1f,5,3,0,0,-4,-0.4f,3
         ),
         new Policy(7,"FoodForPower",
-            "An unexpected power outage dealt considerable damage to the cityÅfs food supplies. Fortunately, the city has access to an experimental machine that can compress energy back into matter. Unfortunately, it will cost a signigicant amount of energy to replenish the food supplies lost with the machine. This bill will authorize the lab owning the machine to tap into the cityÅfs power supplies to replenish the cityÅfs food supplies.",
+            "An unexpected power outage dealt considerable damage to the cityÔøΩfs food supplies. Fortunately, the city has access to an experimental machine that can compress energy back into matter. Unfortunately, it will cost a signigicant amount of energy to replenish the food supplies lost with the machine. This bill will authorize the lab owning the machine to tap into the cityÔøΩfs power supplies to replenish the cityÔøΩfs food supplies.",
            "PolicySource3", 1,2,6, -3,0,0,2,2,-2,5,0,0,-3
         ),
     };
@@ -63,7 +63,11 @@ public class PolicyScript : MonoBehaviour
 
     public void reduceCooldown()
     {
+       Debug.Log("BEFORE REDUCTION");
+        PrintCooldownPolicies();
         Policy.reduceTurnCooldown(policies);
+        Debug.Log("AFTER REDUCTION");
+        PrintCooldownPolicies();
     }
 
     public Policy[] getPolicies()
@@ -132,5 +136,16 @@ public class PolicyScript : MonoBehaviour
         {
             PlayerPrefs.SetInt(policy.title, policy.cooldown);
         }
+        
     }
+
+    public void PrintCooldownPolicies(){
+        Debug.Log("NEW TURN");
+        foreach (var policy in policies)
+        {
+            Debug.Log(policy.title+":"+policy.cooldown);
+        }
+    }
+
+    
 }
