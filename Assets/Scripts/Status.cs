@@ -382,6 +382,8 @@ public class Status : MonoBehaviour
 
         // Pollution Dissipates Reduction
         AddPollution(-1);
+        
+        
     }
 
     public void AddMoney(int addedMoney)

@@ -28,7 +28,7 @@ public class PolicyScript : MonoBehaviour
         ),
         new Policy(6,"NoWayHome",
             "A neighborhood complained that the roads in their neighborhood have fallen into disrepair. A few people have taken the issue to social media and pressing the city's Public Infrastructures Department to take action, however the department advised that the repairs will require a section of a nearby river to be reclaimed, potentially destroying the habitat of various local fishes and reducing the amount of water that flows downstream. This bill will authorize road repairs for the neighborhood.",
-           "PolicySource4", 1,-2,0,0,0,0.1f,5,3,0,0,-4,-0.4f,3
+           "PolicySource4", 1,-2,0,0,0,0.1f,5,3,0,0,-3,-0.4f,3
         ),
         new Policy(7,"FoodForPower",
             "An unexpected power outage dealt considerable damage to the city�fs food supplies. Fortunately, the city has access to an experimental machine that can compress energy back into matter. Unfortunately, it will cost a signigicant amount of energy to replenish the food supplies lost with the machine. This bill will authorize the lab owning the machine to tap into the city�fs power supplies to replenish the city�fs food supplies.",
