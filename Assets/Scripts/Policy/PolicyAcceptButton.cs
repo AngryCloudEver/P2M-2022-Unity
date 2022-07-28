@@ -44,22 +44,21 @@ public class PolicyAcceptButton : MonoBehaviour
             // Lose
             if(RNG == 1)
             {
-                stats.GetComponent<Status>().AddMoney(-3);
-
+                stats.GetComponent<Status>().AddMoney(0);
             }
             // Rank 1
             else if(RNG == 2)
             {
-                stats.GetComponent<Status>().AddMoney(7);
+                stats.GetComponent<Status>().AddMoney(12);
             }
             // Rank 2
             else if(RNG == 3)
             {
-                stats.GetComponent<Status>().AddMoney(5);
+                stats.GetComponent<Status>().AddMoney(9);
             }
             else if (RNG == 4)
             {
-                stats.GetComponent<Status>().AddMoney(3);
+                stats.GetComponent<Status>().AddMoney(7);
             }
 
             stats.GetComponent<Status>().AddFood(0);

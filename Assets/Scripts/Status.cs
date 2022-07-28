@@ -216,12 +216,12 @@ public class Status : MonoBehaviour
         new Power("Hydro",2,1,3),
         new Power("Solar",3,0,6)
     };
-    Money money = new Money(10);
+    Money money = new Money(50);
     Industry industry = new Industry(1f);
     Reputation reputation = new Reputation(20);
     Pollution pollution = new Pollution(10);
     public int powerAmount, maxPowerAmount = 20;
-    public int maxReputation = 100;
+    public int maxReputation = 99;
     public int minMoneyGainAfterProducingFood = -3;
     public int maxMoneyGainAfterProducingFood = 9;
 
@@ -249,7 +249,7 @@ public class Status : MonoBehaviour
         moneyText.text = "" + money.playerAmount;
         powerText.text = "" + CalculatePower() + "/" + maxPowerAmount;
         industryText.text = "" + Mathf.Round(industry.playerAmount);
-        reputationText.text = "" + reputation.playerAmount + "/30";
+        reputationText.text = "" + reputation.playerAmount + "/" + maxReputation;
         pollutionText.text = "" + pollution.playerAmount;
         foodText.text = "" + food.playerAmount + "/20";
         turnText.text = "Month " + turn.GetComponent<TurnManagement>().getTurn();
@@ -258,8 +258,6 @@ public class Status : MonoBehaviour
     
     public void newTurn()
     {
-        
-
         // Check Food Cap
         if (food.playerAmount > 20)
         {
@@ -336,8 +334,6 @@ public class Status : MonoBehaviour
                             chosenPower.restricted = true;
                             SubtractMoney(chosenPower.cost);
                             AddPollution(chosenPower.pollution);
-
-                            Debug.Log(chosenPower.name);
                         }
                     } while (chosenPower == null);
 
