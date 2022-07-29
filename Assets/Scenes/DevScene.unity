@@ -1736,6 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10771515eebd994ca075128155c6801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnManagement: {fileID: 1708468321}
   SFX: {fileID: 670877130}
   cameraMovement: {fileID: 645208208}
   statusCanvas: {fileID: 1251235503}

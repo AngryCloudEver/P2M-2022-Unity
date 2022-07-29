@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameOverHandler : MonoBehaviour
 {
+    public GameObject turnManagement;
     public GameObject SFX;
     public GameObject cameraMovement;
     public GameObject statusCanvas;
@@ -15,9 +16,14 @@ public class GameOverHandler : MonoBehaviour
     public int gameOverText;
     public bool isGameOver = false;
 
+    private void Awake() {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         gameOverText = -1;
     }
@@ -89,6 +95,12 @@ public class GameOverHandler : MonoBehaviour
 
     void DeclareGameOver(){
         isGameOver = true;
+        // Determine the highscore 
+        int currentScore = turnManagement.GetComponent<TurnManagement>().getTurn();
+        int highscore = PlayerPrefs.GetInt("Highscore",0);
+        if(currentScore>highscore){
+            PlayerPrefs.SetInt("Highscore",currentScore);
+        }
     }
     
 }

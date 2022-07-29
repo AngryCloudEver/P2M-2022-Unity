@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - CameraMovement
     - GameOverHandler
     - GameSavedHandler
+    - MainSceneLoader
     - MenuButton
     - PauseHandler
     - PolicyAcceptButton
@@ -258,6 +259,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3368}
     - Class: 114
       Script: {instanceID: 4078}
+    - Class: 114
+      Script: {instanceID: 25672}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -721,7 +724,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: fa38abdee9dcdb79ccf64fdba9055230
+      Hash: 516a2fa0cf8bd3badef461ed863089dd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameOverHandler
@@ -947,6 +950,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameSavedHandler
+  - hash:
+      serializedVersion: 2
+      Hash: fd603770689195d8c21e05ad28422d62
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainSceneLoader
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
