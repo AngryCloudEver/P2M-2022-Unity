@@ -98,7 +98,7 @@ public class GameOverHandler : MonoBehaviour
         // Determine the highscore 
         int currentScore = turnManagement.GetComponent<TurnManagement>().getTurn();
         int highscore = PlayerPrefs.GetInt("Highscore",0);
-        if(currentScore>highscore){
+        if(currentScore<highscore){
             PlayerPrefs.SetInt("Highscore",currentScore);
         }
     }
