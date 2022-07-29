@@ -17869,14 +17869,14 @@ RectTransform:
   m_GameObject: {fileID: 1142887847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2237, z: 1}
   m_Children: []
   m_Father: {fileID: 593941879}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -515, y: -1}
+  m_AnchoredPosition: {x: -555, y: -1}
   m_SizeDelta: {x: 52, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142887849
@@ -17912,9 +17912,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'MANPOWER
-
-    Manpower boosts your efficiency of food and power industry. '
+  m_Text: "MANPOWER\nManpower boosts your efficiency of food and power industry.
+    \nManpower acts as a direct multiplier for the production of industries. \r\nTry
+    to keep them higher than 1 or else you will waste money."
 --- !u!222 &1142887850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17980,14 +17980,14 @@ RectTransform:
   m_GameObject: {fileID: 1143990116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.2006726, y: 0.56304854, z: 0.99998814}
+  m_LocalScale: {x: 5.6604123, y: 1.0766317, z: 0.99998814}
   m_Children: []
   m_Father: {fileID: 593941879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -339, y: -1}
+  m_AnchoredPosition: {x: -363, y: -1}
   m_SizeDelta: {x: 100, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143990118
@@ -24766,8 +24766,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096685991}
   m_HandleRect: {fileID: 1096685990}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.79779446
+  m_Value: 1.000001
+  m_Size: 0.7977947
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
