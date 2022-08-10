@@ -58,7 +58,6 @@ public class GameOverHandler : MonoBehaviour
             winTitle.text = "YOU LOSE!";
             if(!isGameOver){
                 SFX.GetComponent<SoundEffects>().PlayLose();
-                DeclareGameOver();
             }
             
         }
